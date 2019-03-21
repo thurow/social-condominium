@@ -12,7 +12,7 @@ export default class LaunchScreen extends Component {
         <ScrollView style={styles.container}>
           <View style={styles.section} >
             <Text style={styles.sectionTitle}>
-              Social Condominium Hello HelloWorld
+              Social Condominium HelloWorld
             </Text>
           </View>
 
