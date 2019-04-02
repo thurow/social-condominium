@@ -41,9 +41,11 @@ const ApplicationStyles = {
       marginHorizontal: Metrics.smallMargin
     },
     titleText: {
-      ...Fonts.style.h2,
-      fontSize: 14,
-      color: Colors.text
+      ...Fonts.style.h1,
+      marginBottom: 20,
+      fontSize: 22,
+      textAlign: 'center',
+      color: Colors.facebook
     }
   },
   darkLabelContainer: {

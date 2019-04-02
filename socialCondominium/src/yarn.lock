@@ -5611,6 +5611,13 @@ ignite-andross@^4.0.0-alpha.2:
   dependencies:
     ramda "^0.23.0"
 
+ignite-ir-boilerplate@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/ignite-ir-boilerplate/-/ignite-ir-boilerplate-2.3.3.tgz#1d3d5045e5bfe27734d0b38b8ef6ee0296de4626"
+  integrity sha512-CLcHUNSNwA+p7GqrXZ4R4vBFQ72A+AFKfv8KeeKcJJHOmUmUnCMlSufc6T9btRE6JBm0tE8j+qMhLWwNrr8KsQ==
+  dependencies:
+    ramda "^0.23.0"
+
 ignite-standard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ignite-standard/-/ignite-standard-1.0.0.tgz#76ad70395d3e8a382dcf1395761e1ae19b6d0849"
