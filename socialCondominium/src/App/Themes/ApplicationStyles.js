@@ -1,6 +1,7 @@
 import Fonts from './Fonts'
 import Metrics from './Metrics'
 import Colors from './Colors'
+import { PixelRatio } from 'react-native'
 
 // This file is for a reusable grouping of Theme items.
 // Similar to an XML fragment layout in Android
@@ -8,7 +9,8 @@ import Colors from './Colors'
 const ApplicationStyles = {
   screen: {
     mainContainer: {
-      flex: 1,
+      paddingVertical:PixelRatio.getPixelSizeForLayoutSize(10),
+      paddingHorizontal: PixelRatio.getPixelSizeForLayoutSize(5),
       backgroundColor: Colors.transparent
     },
     backgroundImage: {
@@ -24,8 +26,19 @@ const ApplicationStyles = {
       backgroundColor: Colors.transparent
     },
     section: {
-      margin: Metrics.section,
-      padding: Metrics.baseMargin
+      flex: 1,
+      justifyContent: 'center',
+      padding: 10
+    },
+    containerLogo: {
+      height: PixelRatio.getPixelSizeForLayoutSize(50),
+      alignItems: 'center'
+    },
+    logo: {
+      maxWidth: '100%',
+      padding:PixelRatio.getPixelSizeForLayoutSize(2),
+      height:PixelRatio.getPixelSizeForLayoutSize(50),
+      width: PixelRatio.getPixelSizeForLayoutSize(75),
     },
     sectionText: {
       ...Fonts.style.normal,
