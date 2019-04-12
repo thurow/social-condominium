@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import {
-	Animated,
-	Dimensions,
-	Keyboard,
 	Text,
 	TextInput,
 	View,
 	TouchableOpacity,
-	Alert,
-	Image,
-	UIManager,
-	TextInputState
+	Alert
 } from 'react-native';
 import KeyboardShift from './KeyboardShift';
+import Logo from '../Components/Logo'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
@@ -29,9 +24,7 @@ class LoginScreen extends Component {
 			<KeyboardShift>
 				{() => (
 					<View>
-						<View style={styles.containerLogo}>
-							<Image source={require('../Images/logo_bg.png')} style={styles.logo} resizeMode="contain" />
-						</View>
+            <Logo />
 						<Text style={styles.titleText}>Faça seu Login</Text>
 						<TextInput
 							value={this.state.email}

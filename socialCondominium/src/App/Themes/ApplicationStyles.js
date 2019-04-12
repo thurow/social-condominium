@@ -30,16 +30,6 @@ const ApplicationStyles = {
       justifyContent: 'center',
       padding: 10
     },
-    containerLogo: {
-      height: PixelRatio.getPixelSizeForLayoutSize(50),
-      alignItems: 'center'
-    },
-    logo: {
-      maxWidth: '100%',
-      padding:PixelRatio.getPixelSizeForLayoutSize(2),
-      height:PixelRatio.getPixelSizeForLayoutSize(50),
-      width: PixelRatio.getPixelSizeForLayoutSize(75),
-    },
     sectionText: {
       ...Fonts.style.normal,
       paddingVertical: Metrics.doubleBaseMargin,
