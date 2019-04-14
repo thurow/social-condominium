@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:806706434094:android:9091bf0e6de2c465",
+        "mobilesdk_app_id": "1:806706434094:android:c7305eed3ca4dccb",
         "android_client_info": {
-          "package_name": "com.social.condominium"
+          "package_name": "com.src"
         }
       },
       "oauth_client": [

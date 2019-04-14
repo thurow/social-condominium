@@ -13,24 +13,43 @@ import Logo from '../Components/Logo'
 
 // Styles
 import styles from './Styles/LoginScreenStyle';
+import firebase from 'react-native-firebase';
+
 
 class LoginScreen extends Component {
 	state = {
 		email: '',
-		password: ''
+		password: '',
+		isAuthenticated: false
 	};
+
+	_submitForm = async () => {
+		const { email, password } = this.state;
+
+		try {
+			const user = await firebase.auth().signInWithEmailAndPassword(email, password)
+			this.setState({isAuthenticated: true});
+			console.log(user)
+		} catch (error) {
+			console.log(error)
+		}
+
+
+		Alert.alert(email, password);
+	};
+
 	render() {
 		return (
 			<KeyboardShift>
 				{() => (
 					<View>
-            <Logo />
+						<Logo />
 						<Text style={styles.titleText}>Faça seu Login</Text>
 						<TextInput
 							value={this.state.email}
 							name="email"
 							style={styles.textInput}
-							placeholder="email@provedor.com"
+							placeholder="Digite seu e-mail"
 							autoCapitalize="none"
 							keyboardType="email-address"
 							onChangeText={(email) => this.setState({ email })}
@@ -53,11 +72,6 @@ class LoginScreen extends Component {
 		);
 	}
 
-	_submitForm = () => {
-		const { email, password } = this.state;
-		Alert.alert(email, password);
-		// do some stuff here…
-	};
 }
 
 export default LoginScreen;
