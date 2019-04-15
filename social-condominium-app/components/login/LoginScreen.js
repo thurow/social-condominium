@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
-	Text,
-	TextInput,
-	View,
 	TouchableOpacity,
 	Alert
-} from 'react-native';
-import KeyboardShift from './KeyboardShift';
-import Logo from './Logo'
+} from 'react-native'
+import KeyboardShift from '../keyboardshift/KeyboardShift'
+import Logo from '../logo/Logo'
+import { Title, Input, SubmitButton, Container } from './styles'
+
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
 import firebase from 'react-native-firebase';
-
 
 class LoginScreen extends Component {
 	state = {
@@ -42,10 +40,10 @@ class LoginScreen extends Component {
 		return (
 			<KeyboardShift>
 				{() => (
-					<View>
-						{/* <Logo /> */}
-						<Text>Faça seu Login</Text>
-						<TextInput
+					<Container>
+						<Logo />
+						<Title>Faça seu Login</Title>
+						<Input
 							value={this.state.email}
 							name="email"
 							placeholder="Digite seu e-mail"
@@ -53,7 +51,7 @@ class LoginScreen extends Component {
 							keyboardType="email-address"
 							onChangeText={(email) => this.setState({ email })}
 						/>
-						<TextInput
+						<Input
 							value={this.state.password}
 							name="password"
 							placeholder="Sua Senha"
@@ -62,9 +60,9 @@ class LoginScreen extends Component {
 							onSubmitEditing={this._submitForm}
 						/>
 						<TouchableOpacity onPress={this._submitForm}>
-							<Text>Entrar</Text>
+							<SubmitButton>Entrar</SubmitButton>
 						</TouchableOpacity>
-					</View>
+					</Container>
 				)}
 			</KeyboardShift>
 		);

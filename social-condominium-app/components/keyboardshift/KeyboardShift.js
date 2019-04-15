@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, Dimensions, Keyboard, TextInput, UIManager } from 'react-native';
+import { Animated, Dimensions, Keyboard, TextInput, UIManager, PixelRatio, StyleSheet } from 'react-native';
 
 const { State: TextInputState } = TextInput;
 
@@ -22,7 +22,7 @@ export default class KeyboardShift extends Component {
     const { children: renderProp } = this.props;
     const { shift } = this.state;
     return (
-      <Animated.View style={[{ transform: [{translateY: shift}] }]}>
+      <Animated.View style={[styles.container, { transform: [{translateY: shift}] }]}>
         {renderProp()}
       </Animated.View>
     );
@@ -61,3 +61,10 @@ export default class KeyboardShift extends Component {
     ).start();
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: PixelRatio.getPixelSizeForLayoutSize(5),
+    paddingVertical: PixelRatio.getPixelSizeForLayoutSize(10)
+  }
+});
