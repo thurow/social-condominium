@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert } from 'react-native'
+import { Alert, Text } from 'react-native'
 import KeyboardShift from '../keyboardshift/KeyboardShift'
 import Logo from '../logo/Logo'
 import ActionButton from '../button/ActionButton'
@@ -14,20 +14,34 @@ class LoginScreen extends Component {
 		isAuthenticated: false
 	};
 
+	_validateEmptyInputs = () => {
+		const { email, password } = this.state
+
+		if (email === '') {
+			Alert.alert("Por favor informe um e-mail válido.")
+			return false
+		}
+		if (password === '') {
+			Alert.alert("Por favor informe uma senha válida.")
+			return false
+		}
+		return true
+	}
+
 	_submitForm = async () => {
 		const { email, password } = this.state;
+		const isEmptyInputs = this._validateEmptyInputs()
 
 		try {
-			const user = await firebase.auth().signInWithEmailAndPassword(email, password)
-			this.setState({isAuthenticated: true});
-			console.log(user)
-		Alert.alert(user.user.email);
-
+			if (isEmptyInputs) {
+				const user = await firebase.auth().signInWithEmailAndPassword(email, password)
+				this.setState({isAuthenticated: true});
+				console.log(user)
+				Alert.alert(user.user.email);
+			}
 		} catch (error) {
 			console.log(error)
 		}
-
-
 	};
 
 	render() {
@@ -43,6 +57,7 @@ class LoginScreen extends Component {
 							placeholder="Digite seu e-mail"
 							autoCapitalize="none"
 							keyboardType="email-address"
+							isValid={true}
 							onChangeText={(email) => this.setState({ email })}
 						/>
 						<Input
@@ -50,6 +65,7 @@ class LoginScreen extends Component {
 							name="password"
 							placeholder="Sua Senha"
 							secureTextEntry
+							isValid={true}
 							onChangeText={(password) => this.setState({ password })}
 							onSubmitEditing={this._submitForm}
 						/>
@@ -61,6 +77,22 @@ class LoginScreen extends Component {
 						<ActionButton
 							// action={}
 							title='Cadastre-se'
+						/>
+						<Text>ou</Text>
+						{/**
+						@TODO transformar botões em somente logo, sem texto
+						*/}
+						<ActionButton
+							// action={}
+							title='Login com Facebook'
+							color='#3b5998'
+							isPrimary
+						/>
+						<ActionButton
+							// action={}
+							title='Login com Google'
+							color='#d34836'
+							isPrimary
 						/>
 					</Container>
 				)}

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { TouchableOpacity } from 'react-native'
 import { ButtonStyle } from './styles'
 
-const ActionButton = ({ title, action, isPrimary }) => {
+const ActionButton = ({ title, color, action, isPrimary }) => {
   return (
     <TouchableOpacity onPress={action}>
-      <ButtonStyle isPrimary={isPrimary}>{title}</ButtonStyle>
+      <ButtonStyle isPrimary={isPrimary} color={color}>{title}</ButtonStyle>
     </TouchableOpacity>
   )
 }
@@ -14,13 +14,15 @@ const ActionButton = ({ title, action, isPrimary }) => {
 ActionButton.propTypes = {
   title: PropTypes.string,
   action: PropTypes.func,
-  isPrimary: PropTypes.bool
+  isPrimary: PropTypes.bool,
+  color: PropTypes.string
 }
 
 ActionButton.defaultProps = {
   title: 'Clique Aqui',
   action: () => alert('Pressinou'),
-  isPrimary: false
+  isPrimary: false,
+  color: '#eb4444'
 }
 
 export default ActionButton
