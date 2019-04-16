@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import {
-	TouchableOpacity,
-	Alert
-} from 'react-native'
+import { Alert } from 'react-native'
 import KeyboardShift from '../keyboardshift/KeyboardShift'
 import Logo from '../logo/Logo'
-import { Title, Input, SubmitButton, Container } from './styles'
+import ActionButton from '../button/ActionButton'
+import { Title, Input, Container } from './styles'
 
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
-
-// Styles
 import firebase from 'react-native-firebase';
 
 class LoginScreen extends Component {
@@ -59,9 +53,15 @@ class LoginScreen extends Component {
 							onChangeText={(password) => this.setState({ password })}
 							onSubmitEditing={this._submitForm}
 						/>
-						<TouchableOpacity onPress={this._submitForm}>
-							<SubmitButton>Entrar</SubmitButton>
-						</TouchableOpacity>
+						<ActionButton
+							action={this._submitForm}
+							title='Entrar'
+							isPrimary
+						/>
+						<ActionButton
+							// action={}
+							title='Cadastre-se'
+						/>
 					</Container>
 				)}
 			</KeyboardShift>

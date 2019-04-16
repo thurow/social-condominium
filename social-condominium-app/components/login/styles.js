@@ -4,16 +4,6 @@ export const Container = styled.View`
     width: 100%;
 `
 
-export const SubmitButton = styled.Text`
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    background: #eb4444;
-    font-weight: 600;
-    padding: 10px;
-    margin-top: 10px
-`
-
 export const Input = styled.TextInput`
     height: 40px;
     margin-bottom: 10px;
