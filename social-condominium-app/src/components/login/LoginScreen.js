@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Alert, Text } from 'react-native'
-import KeyboardShift from '../keyboardshift/KeyboardShift'
-import Logo from '../logo/Logo'
-import ActionButton from '../button/ActionButton'
-import { Title, Input, Container } from './styles'
+import React, { Component } from 'react';
+import { Alert, Text } from 'react-native';
+import KeyboardShift from '../keyboardshift/KeyboardShift';
+import Logo from '../logo/Logo';
+import ActionButton from '../button/ActionButton';
+import { Title, Input, Container } from './styles';
 
 import firebase from 'react-native-firebase';
 
@@ -15,36 +15,37 @@ class LoginScreen extends Component {
 	};
 
 	_validateEmptyInputs = () => {
-		const { email, password } = this.state
+		const { email, password } = this.state;
 
 		if (email === '') {
-			Alert.alert("Por favor informe um e-mail válido.")
-			return false
+			Alert.alert('Por favor informe um e-mail válido.');
+			return false;
 		}
 		if (password === '') {
-			Alert.alert("Por favor informe uma senha válida.")
-			return false
+			Alert.alert('Por favor informe uma senha válida.');
+			return false;
 		}
-		return true
-	}
+		return true;
+	};
 
 	_submitForm = async () => {
 		const { email, password } = this.state;
-		const isEmptyInputs = this._validateEmptyInputs()
+		const isNotEmptuInputs = this._validateEmptyInputs();
 
 		try {
-			if (isEmptyInputs) {
-				const user = await firebase.auth().signInWithEmailAndPassword(email, password)
-				this.setState({isAuthenticated: true});
-				console.log(user)
+			if (isNotEmptuInputs) {
+				const user = await firebase.auth().signInWithEmailAndPassword(email, password);
+				this.setState({ isAuthenticated: true });
+				console.log(user);
 				Alert.alert(user.user.email);
 			}
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
 	};
 
 	render() {
+		const {navigate} = this.props.navigation;
 		return (
 			<KeyboardShift>
 				{() => (
@@ -69,29 +70,23 @@ class LoginScreen extends Component {
 							onChangeText={(password) => this.setState({ password })}
 							onSubmitEditing={this._submitForm}
 						/>
-						<ActionButton
-							action={this._submitForm}
-							title='Entrar'
-							isPrimary
-						/>
-						<ActionButton
-							// action={}
-							title='Cadastre-se'
-						/>
+						<ActionButton action={this._submitForm} title="Entrar" isPrimary />
+						<ActionButton action={() => navigate('Register')}
+						title="Cadastre-se" />
 						<Text>ou</Text>
 						{/**
 						@TODO transformar botões em somente logo, sem texto
 						*/}
 						<ActionButton
 							// action={}
-							title='Login com Facebook'
-							color='#3b5998'
+							title="Login com Facebook"
+							color="#3b5998"
 							isPrimary
 						/>
 						<ActionButton
 							// action={}
-							title='Login com Google'
-							color='#d34836'
+							title="Login com Google"
+							color="#d34836"
 							isPrimary
 						/>
 					</Container>
@@ -99,7 +94,10 @@ class LoginScreen extends Component {
 			</KeyboardShift>
 		);
 	}
+}
 
+LoginScreen.navigationOptions = {
+	title: 'Faça Login'
 }
 
 export default LoginScreen;
