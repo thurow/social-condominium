@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
 class RegisterScreen extends Component {
+
+  state = {
+		email: '',
+		password: '',
+		isAuthenticated: false
+  };
+
   render() {
     return (
       <View>

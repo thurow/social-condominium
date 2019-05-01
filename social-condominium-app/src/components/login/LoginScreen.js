@@ -47,51 +47,47 @@ class LoginScreen extends Component {
 	render() {
 		const {navigate} = this.props.navigation;
 		return (
-			<KeyboardShift>
-				{() => (
-					<Container>
-						<Logo />
-						<Title>Faça seu Login</Title>
-						<Input
-							value={this.state.email}
-							name="email"
-							placeholder="Digite seu e-mail"
-							autoCapitalize="none"
-							keyboardType="email-address"
-							isValid={true}
-							onChangeText={(email) => this.setState({ email })}
-						/>
-						<Input
-							value={this.state.password}
-							name="password"
-							placeholder="Sua Senha"
-							secureTextEntry
-							isValid={true}
-							onChangeText={(password) => this.setState({ password })}
-							onSubmitEditing={this._submitForm}
-						/>
-						<ActionButton action={this._submitForm} title="Entrar" isPrimary />
-						<ActionButton action={() => navigate('Register')}
-						title="Cadastre-se" />
-						<Text>ou</Text>
-						{/**
-						@TODO transformar botões em somente logo, sem texto
-						*/}
-						<ActionButton
-							// action={}
-							title="Login com Facebook"
-							color="#3b5998"
-							isPrimary
-						/>
-						<ActionButton
-							// action={}
-							title="Login com Google"
-							color="#d34836"
-							isPrimary
-						/>
-					</Container>
-				)}
-			</KeyboardShift>
+			<Container>
+				<Logo />
+				<Title>Faça seu Login</Title>
+				<Input
+					value={this.state.email}
+					name="email"
+					placeholder="Digite seu e-mail"
+					autoCapitalize="none"
+					keyboardType="email-address"
+					isValid={true}
+					onChangeText={(email) => this.setState({ email })}
+				/>
+				<Input
+					value={this.state.password}
+					name="password"
+					placeholder="Sua Senha"
+					secureTextEntry
+					isValid={true}
+					onChangeText={(password) => this.setState({ password })}
+					onSubmitEditing={this._submitForm}
+				/>
+				<ActionButton action={this._submitForm} title="Entrar" isPrimary />
+				<ActionButton action={() => navigate('Register')}
+				title="Cadastre-se" />
+				<Text>ou</Text>
+				{/**
+				@TODO transformar botões em somente logo, sem texto
+				*/}
+				<ActionButton
+					// action={}
+					title="Login com Facebook"
+					color="#3b5998"
+					isPrimary
+				/>
+				<ActionButton
+					// action={}
+					title="Login com Google"
+					color="#d34836"
+					isPrimary
+				/>
+			</Container>
 		);
 	}
 }
