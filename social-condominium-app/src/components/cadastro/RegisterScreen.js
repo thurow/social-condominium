@@ -1,18 +1,41 @@
 import React, { Component } from 'react'
-import {KeyboardAvoidingView} from 'react-native';
+import { Alert } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 import InpuTypeText from '../inputs/InpuTypeText'
 import ActionButton from '../button/ActionButton';
 import Logo from '../logo/Logo';
 import { Container } from './styles'
+import firebase from 'react-native-firebase';
 
 class RegisterScreen extends Component {
 
   state = {
     first_name: '',
     last_name: '',
-		email: '',
-		password: ''
+    email: '',
+    password: ''
   };
+
+  register = async () => {
+    const { email, password } = this.state;
+
+    if (!email || !password) {
+      Alert.alert('O e-mail e a senha são obrigatórios');
+      return
+    }
+
+    try {
+      const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
+      console.log(response)
+      Alert.alert('Sua conta foi criada com sucesso!');
+      this.props.navigation.navigate('Home')
+    } catch (error) {
+      const isPasswordError = error.message.includes('password')
+      const message = isPasswordError ? 'A senha deve conter no mínimo 6 caracteres' : 'E-mail inválido'
+      Alert.alert(message);
+    }
+
+  }
 
   render() {
     return (
@@ -26,7 +49,7 @@ class RegisterScreen extends Component {
             name='first_name'
             autoCapitalize='words'
             keyboardType='default'
-            onChange={(first_name) => this.setState({first_name})}
+            onChange={(first_name) => this.setState({ first_name })}
             placeholder='Nome'
           />
           <InpuTypeText
@@ -34,7 +57,7 @@ class RegisterScreen extends Component {
             name='last_name'
             autoCapitalize='words'
             keyboardType='default'
-            onChange={(last_name) => this.setState({last_name})}
+            onChange={(last_name) => this.setState({ last_name })}
             placeholder='Sobrenome'
           />
           <InpuTypeText
@@ -42,7 +65,7 @@ class RegisterScreen extends Component {
             name='email'
             autoCapitalize='none'
             keyboardType='email-address'
-            onChange={(email) => this.setState({email})}
+            onChange={(email) => this.setState({ email })}
             placeholder='E-mail'
           />
           <InpuTypeText
@@ -51,14 +74,15 @@ class RegisterScreen extends Component {
             autoCapitalize='none'
             keyboardType='default'
             secureTextEntry={true}
-            onChange={(password) => this.setState({password})}
-            placeholder='Sobrenome'
+            onChange={(password) => this.setState({ password })}
+            placeholder='Senha'
           />
         </Container>
         <Container>
           <ActionButton
             title="Cadastre-se"
             isPrimary
+            action={this.register}
           />
         </Container>
       </KeyboardAvoidingView>
@@ -67,7 +91,7 @@ class RegisterScreen extends Component {
 }
 
 RegisterScreen.navigationOptions = {
-	title: 'Cadastre-se'
+  title: 'Cadastre-se'
 }
 
 export default RegisterScreen

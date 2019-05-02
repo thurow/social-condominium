@@ -31,16 +31,17 @@ class LoginScreen extends Component {
 
 	_submitForm = async () => {
 		const { email, password } = this.state;
-		const isNotEmptuInputs = this._validateEmptyInputs();
+		const validInputs = this._validateEmptyInputs();
 
 		try {
-			if (isNotEmptuInputs) {
+			if (validInputs) {
 				const user = await firebase.auth().signInWithEmailAndPassword(email, password);
 				this.setState({ isAuthenticated: true });
 				console.log(user);
 			}
 		} catch (error) {
 			console.log(error);
+			Alert.alert('E-mail ou senha estão incorretos');
 		}
 	};
 
