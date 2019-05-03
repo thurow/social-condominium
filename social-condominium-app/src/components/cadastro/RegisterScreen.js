@@ -6,6 +6,7 @@ import ActionButton from '../button/ActionButton';
 import Logo from '../logo/Logo';
 import { Container } from './styles'
 import firebase from 'react-native-firebase';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class RegisterScreen extends Component {
 
@@ -18,23 +19,40 @@ class RegisterScreen extends Component {
 
   register = async () => {
     const { email, password } = this.state;
-
     if (!email || !password) {
       Alert.alert('O e-mail e a senha são obrigatórios');
       return
     }
 
     try {
-      const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
-      console.log(response)
-      Alert.alert('Sua conta foi criada com sucesso!');
-      this.props.navigation.navigate('Home')
+      const authentication = await firebase.auth().createUserWithEmailAndPassword(email, password)
+      await firebase.firestore().collection('users').doc(authentication.user.uid).set({
+        firstName: this.state.first_name,
+        lastName: this.state.last_name
+      })
+      this.storeData(authentication);
+      this.props.navigation.navigate('Dashboard')
     } catch (error) {
+      console.log(error)
       const isPasswordError = error.message.includes('password')
       const message = isPasswordError ? 'A senha deve conter no mínimo 6 caracteres' : 'E-mail inválido'
       Alert.alert(message);
     }
 
+  }
+
+  storeData = async (authentication) => {
+    try {
+      await AsyncStorage.setItem('@user', JSON.stringify({
+        id: authentication.user.uid,
+        email: authentication.user.email,
+        fistName: this.state.first_name,
+        lastName: this.state.last_name
+      }))
+    } catch (e) {
+      // saving error
+      console.log(e)
+    }
   }
 
   render() {
