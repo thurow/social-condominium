@@ -1,29 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { Reducers } from './src/reducers';
+export const Store = createStore(Reducers);
 
-import LoginScreen from './components/login/LoginScreen';
+import Navigator from './src';
+import { createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+const Main = createAppContainer(Navigator.MainNavigator)
 
-  render() {
-    return (
-      <ScrollView>
-        <View style={styles.container}>
-          <LoginScreen />
-        </View>
-      </ScrollView>
-    );
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <Main />
+  </Provider>
+)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
+export default App

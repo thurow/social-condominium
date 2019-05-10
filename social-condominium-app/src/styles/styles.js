@@ -12,3 +12,11 @@ export const Container = styled.View`
     padding:15px;
     text-align: center;
 `
+
+export const Title = styled.Text`
+    color: #3b5998;
+    margin-bottom:20px;
+    font-size: 22px;
+    text-align: center;
+    font-family: Avenir-Book;
+`

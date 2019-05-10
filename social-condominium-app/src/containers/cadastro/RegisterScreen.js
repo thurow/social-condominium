@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
-import InpuTypeText from '../inputs/InpuTypeText'
-import ActionButton from '../button/ActionButton';
-import Logo from '../logo/Logo';
-import { Container } from './styles'
+import InpuTypeText from '../../components/inputs/InpuTypeText'
+import ActionButton from '../../components/button/ActionButton';
+import Logo from '../../components/logo/Logo';
+import { Container } from '../../styles/styles'
 import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -30,7 +30,7 @@ class RegisterScreen extends Component {
         firstName: this.state.first_name,
         lastName: this.state.last_name
       })
-      this.storeData(authentication);
+      await this.storeData(authentication);
       this.props.navigation.navigate('Dashboard')
     } catch (error) {
       console.log(error)

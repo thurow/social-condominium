@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { Alert, Text } from 'react-native';
 import {KeyboardAvoidingView} from 'react-native';
-import Logo from '../logo/Logo';
-import ActionButton from '../button/ActionButton';
-import InputTypeText from '../inputs/InpuTypeText';
-import { Title, Input, Container } from './styles';
-
+import Logo from '../../components/logo/Logo';
+import ActionButton from '../../components/button/ActionButton';
+import InputTypeText from '../../components/inputs/InpuTypeText';
+import { Title, Container } from '../../styles/styles';
+import { connect } from "react-redux";
+import * as actions from '../../actions/actions'
 import firebase from 'react-native-firebase';
 
 class LoginScreen extends Component {
-	state = {
-		email: '',
-		password: '',
-		isAuthenticated: false
-	};
+	// state = {
+	// 	email: '',
+	// 	password: '',
+	// 	isAuthenticated: false
+	// };
 
 	_validateEmptyInputs = () => {
 		const { email, password } = this.state;
@@ -36,8 +37,6 @@ class LoginScreen extends Component {
 		try {
 			if (validInputs) {
 				const user = await firebase.auth().signInWithEmailAndPassword(email, password);
-				this.setState({ isAuthenticated: true });
-				console.log(user);
 				this.props.navigation.navigate('Dashboard')
 			}
 		} catch (error) {
@@ -49,24 +48,24 @@ class LoginScreen extends Component {
 	render() {
 		const {navigate} = this.props.navigation;
 		return (
-			<KeyboardAvoidingView behavior="padding" enabled>
+			<KeyboardAvoidingView style behavior="padding" enabled>
 				<Container>
 					<Logo />
 					<Title>Faça seu Login</Title>
 					<InputTypeText
-						onChange={(email) => this.setState({ email })}
-						stateValue={this.state.email}
+						onChange={(email) => this.props.onChangeEmail(email)}
+						stateValue={this.props.email}
 						name="email"
 						placeholder="Digite seu e-mail"
 						autoCapitalize="none"
 						keyboardType="email-address"
 					/>
 					<InputTypeText
-						stateValue={this.state.password}
+						stateValue={this.props.password}
 						name="password"
 						placeholder="Sua Senha"
 						secureTextEntry
-						onChange={(password) => this.setState({ password })}
+						onChange={(password) => this.props.onChangePassword(password)}
 						onSubmitEditing={this._submitForm}
 					/>
 					<ActionButton action={this._submitForm} title="Entrar" isPrimary />
@@ -98,4 +97,18 @@ LoginScreen.navigationOptions = {
 	title: 'Faça Login'
 }
 
-export default LoginScreen;
+const mapStateToProps = state => {
+	return {
+		email: state.loginReducer.email,
+		password: state.loginReducer.password
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onChangeEmail: (value) => () => dispatch(actions.changeEmail(value)),
+		onChangePassword: (value) => () => dispatch(actions.changePassword(value))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
