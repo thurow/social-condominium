@@ -4,10 +4,13 @@ import RegisterScreen from './containers/cadastro/RegisterScreen'
 import DashboardScreen from './containers/dashboard/DashboardScreen'
 import AsyncStorage from '@react-native-community/async-storage';
 
-const isUserLoggedIn = async () => await AsyncStorage.getItem('@user')
+const isUserLoggedIn = async () => {
+  const user = await AsyncStorage.getItem('@user')
+  return user !== null
+}
 
 const MainNavigator = createStackNavigator({
-  Home: isUserLoggedIn() ? LoginScreen : DashboardScreen,
+  Home: isUserLoggedIn() ? DashboardScreen : LoginScreen,
   Register: RegisterScreen,
   Dashboard: DashboardScreen
 }, {

@@ -8,16 +8,12 @@ import { Title, Container } from '../../styles/styles';
 import { connect } from "react-redux";
 import * as actions from '../../actions/actions'
 import firebase from 'react-native-firebase';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class LoginScreen extends Component {
-	// state = {
-	// 	email: '',
-	// 	password: '',
-	// 	isAuthenticated: false
-	// };
 
 	_validateEmptyInputs = () => {
-		const { email, password } = this.state;
+		const { email, password } = this.props;
 
 		if (email === '') {
 			Alert.alert('Por favor informe um e-mail válido.');
@@ -30,13 +26,35 @@ class LoginScreen extends Component {
 		return true;
 	};
 
+	storeData = async (user) => {
+		try {
+		  await AsyncStorage.setItem('@user', JSON.stringify({
+			id: user.uid,
+			email: user.email,
+			firstName: user.firstName,
+			lastName: user.lastName
+		  }))
+		} catch (e) {
+		  // saving error
+		  console.log(e)
+		}
+	  }
+
 	_submitForm = async () => {
-		const { email, password } = this.state;
+		const { email, password } = this.props;
 		const validInputs = this._validateEmptyInputs();
 
 		try {
 			if (validInputs) {
-				const user = await firebase.auth().signInWithEmailAndPassword(email, password);
+				const authentication = await firebase.auth().signInWithEmailAndPassword(email, password);
+				const user = await firebase.firestore().collection('users').doc(authentication.user.uid).get()
+				const userProfile = {
+					uid: authentication.user.uid,
+					email: email,
+					firstName: user.get('firstName'),
+					lastName: user.get('lastName')
+				}
+				await this.storeData(userProfile);
 				this.props.navigation.navigate('Dashboard')
 			}
 		} catch (error) {
@@ -47,25 +65,26 @@ class LoginScreen extends Component {
 
 	render() {
 		const {navigate} = this.props.navigation;
+		const { email, password, onChangeEmail, onChangePassword } = this.props;
 		return (
 			<KeyboardAvoidingView style behavior="padding" enabled>
 				<Container>
 					<Logo />
 					<Title>Faça seu Login</Title>
 					<InputTypeText
-						onChange={(email) => this.props.onChangeEmail(email)}
-						stateValue={this.props.email}
+						onChange={(value) => onChangeEmail(value)}
+						stateValue={email}
 						name="email"
 						placeholder="Digite seu e-mail"
 						autoCapitalize="none"
 						keyboardType="email-address"
 					/>
 					<InputTypeText
-						stateValue={this.props.password}
+						stateValue={password}
 						name="password"
 						placeholder="Sua Senha"
 						secureTextEntry
-						onChange={(password) => this.props.onChangePassword(password)}
+						onChange={(password) => onChangePassword(password)}
 						onSubmitEditing={this._submitForm}
 					/>
 					<ActionButton action={this._submitForm} title="Entrar" isPrimary />
@@ -76,13 +95,11 @@ class LoginScreen extends Component {
 					@TODO transformar botões em somente logo, sem texto
 					*/}
 					<ActionButton
-						// action={}
 						title="Login com Facebook"
 						color="#3b5998"
 						isPrimary
 					/>
 					<ActionButton
-						// action={}
 						title="Login com Google"
 						color="#d34836"
 						isPrimary
@@ -99,15 +116,15 @@ LoginScreen.navigationOptions = {
 
 const mapStateToProps = state => {
 	return {
-		email: state.loginReducer.email,
-		password: state.loginReducer.password
+		email: state.loginState.email,
+		password: state.loginState.password
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onChangeEmail: (value) => () => dispatch(actions.changeEmail(value)),
-		onChangePassword: (value) => () => dispatch(actions.changePassword(value))
+		onChangeEmail: (newValue) => dispatch(actions.changeEmail(newValue)),
+		onChangePassword: (newValue) => dispatch(actions.changePassword(newValue))
 	}
 }
 

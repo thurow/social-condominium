@@ -2,16 +2,14 @@
 
 import { CLEAR_LOGIN_FIELDS, CHANGE_EMAIL_VALUE, CHANGE_PASSWORD_VALUE } from "./actionTypes"
 
-export const clearFields = () => ({
-    type: CLEAR_LOGIN_FIELDS
-})
+export const clearFields = () => ({ type: CLEAR_LOGIN_FIELDS })
 
-export const changeEmail = (email) ({
+export const changeEmail = (value) => ({
     type: CHANGE_EMAIL_VALUE,
-    email: email
+    email: value
 })
 
-export const changePassword = (password) ({
+export const changePassword = (value) => ({
     type: CHANGE_PASSWORD_VALUE,
-    password: password
+    password: value
 })

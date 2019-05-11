@@ -14,7 +14,7 @@ const changePasswordValue = (state, newValue) => {
     return updateObject(state, { password: newValue })
 }
 
-const reducer = (state = initialState, action) => {
+const loginReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.CLEAR_LOGIN_FIELDS:
             return updateObject(state, initialState)
@@ -27,4 +27,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer
+export default loginReducer
