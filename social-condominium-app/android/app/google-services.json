@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "806706434094",
+    "firebase_url": "https://social-condominium.firebaseio.com",
+    "project_id": "social-condominium",
+    "storage_bucket": "social-condominium.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806706434094:android:c7305eed3ca4dccb",
+        "android_client_info": {
+          "package_name": "com.src"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806706434094-s0mhaernndvqjb2c9gveasr3r622dgie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDXKY_2D6FloMVs5jBGPheN6esU3ZoNeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806706434094-s0mhaernndvqjb2c9gveasr3r622dgie.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "806706434094-rjsibvpl0g1i0lb5nqr7rveihhcjqfg1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.social.condominium"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
