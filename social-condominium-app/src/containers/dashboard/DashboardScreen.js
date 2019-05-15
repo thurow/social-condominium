@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card } from 'react-native-elements'
-import {Button} from 'react-native'
+import { Button } from 'react-native'
 import { Container } from '../../styles/styles'
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -10,19 +10,18 @@ import Logo from '../../components/logo/Logo';
 
 class DashboardScreen extends Component {
 
+
+    state = {
+        name: null
+    }
+
     getUserData = async () => {
         try {
-          const user = await AsyncStorage.getItem('@user')
-
-          if(user !== null) {
-              console.log(JSON.parse(user))
+            const user = await AsyncStorage.getItem('@user')
             return JSON.parse(user)
-          }
-          return null
-
-        } catch(e) {
-          // error reading value
-          console.log(e)
+        } catch (e) {
+            console.log(e)
+            return null
         }
     }
 
@@ -33,15 +32,21 @@ class DashboardScreen extends Component {
     }
 
 
+    async componentWillMount() {
+        const user = await this.getUserData()
+        this.setState({ name: user.firstName })
+    }
+
     render() {
+        const { navigate } = this.props.navigation;
+
         return (
             <Container>
                 <Logo logged />
-                <Card title={`Olá ${this.getUserData() ? this.getUserData().fistName : ''}`}>
-                    <Button title="Sair" onPress={this.logout} />
-
+                <Card title={`Olá ${this.state.name}`}>
+                    <Button title="Gerenciar condomínios" />
                 </Card>
-
+                <Button title="Sair" onPress={this.logout} />
             </Container>
         )
     }

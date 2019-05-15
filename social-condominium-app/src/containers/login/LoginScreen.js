@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, Text } from 'react-native';
-import {KeyboardAvoidingView} from 'react-native';
+import { Alert, Text, View } from 'react-native';
+import { KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import Logo from '../../components/logo/Logo';
 import ActionButton from '../../components/button/ActionButton';
 import InputTypeText from '../../components/inputs/InpuTypeText';
@@ -11,6 +11,16 @@ import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
 
 class LoginScreen extends Component {
+
+
+	state = {
+		loggedIn: null
+	}
+
+	isUserLoggedIn = async () => {
+		const user = await AsyncStorage.getItem('@user')
+		return user !== null
+	}
 
 	_validateEmptyInputs = () => {
 		const { email, password } = this.props;
@@ -28,22 +38,21 @@ class LoginScreen extends Component {
 
 	storeData = async (user) => {
 		try {
-		  await AsyncStorage.setItem('@user', JSON.stringify({
-			id: user.uid,
-			email: user.email,
-			firstName: user.firstName,
-			lastName: user.lastName
-		  }))
+			await AsyncStorage.setItem('@user', JSON.stringify({
+				id: user.uid,
+				email: user.email,
+				firstName: user.firstName,
+				lastName: user.lastName
+			}))
 		} catch (e) {
-		  // saving error
-		  console.log(e)
+			// saving error
+			console.log(e)
 		}
-	  }
+	}
 
 	_submitForm = async () => {
 		const { email, password } = this.props;
 		const validInputs = this._validateEmptyInputs();
-
 		try {
 			if (validInputs) {
 				const authentication = await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -63,47 +72,66 @@ class LoginScreen extends Component {
 		}
 	};
 
+	async componentDidMount() {
+		let loggedIn = await this.isUserLoggedIn()
+
+		setTimeout(() => {
+			if (loggedIn) {
+				this.props.navigation.navigate('Dashboard')
+			}
+			this.setState({ loggedIn })
+		}, 2000) //Demorar = Credibilidade
+
+	}
+
 	render() {
-		const {navigate} = this.props.navigation;
+		const { loggedIn } = this.state
+		const { navigate } = this.props.navigation;
 		const { email, password, onChangeEmail, onChangePassword } = this.props;
 		return (
 			<KeyboardAvoidingView style behavior="padding" enabled>
 				<Container>
 					<Logo />
-					<Title>Faça seu Login</Title>
-					<InputTypeText
-						onChange={(value) => onChangeEmail(value)}
-						stateValue={email}
-						name="email"
-						placeholder="Digite seu e-mail"
-						autoCapitalize="none"
-						keyboardType="email-address"
-					/>
-					<InputTypeText
-						stateValue={password}
-						name="password"
-						placeholder="Sua Senha"
-						secureTextEntry
-						onChange={(password) => onChangePassword(password)}
-						onSubmitEditing={this._submitForm}
-					/>
-					<ActionButton action={this._submitForm} title="Entrar" isPrimary />
-					<ActionButton action={() => navigate('Register')}
-					title="Cadastre-se" />
-					<Text>ou</Text>
-					{/**
+					{loggedIn === null &&
+						<ActivityIndicator size="large" color="#d33028" />
+					}
+					<View style={loggedIn === null ? { display: 'none' } : {}}>
+						<Title>Faça seu Login</Title>
+						<InputTypeText
+							onChange={(value) => onChangeEmail(value)}
+							stateValue={email}
+							name="email"
+							placeholder="Digite seu e-mail"
+							autoCapitalize="none"
+							keyboardType="email-address"
+						/>
+						<InputTypeText
+							stateValue={password}
+							name="password"
+							placeholder="Sua Senha"
+							secureTextEntry
+							onChange={(password) => onChangePassword(password)}
+							onSubmitEditing={this._submitForm}
+						/>
+						<ActionButton action={this._submitForm} title="Entrar" isPrimary />
+						<ActionButton action={() => navigate('Register')}
+							title="Cadastre-se" />
+						<Text>ou</Text>
+						{/**
 					@TODO transformar botões em somente logo, sem texto
 					*/}
-					<ActionButton
-						title="Login com Facebook"
-						color="#3b5998"
-						isPrimary
-					/>
-					<ActionButton
-						title="Login com Google"
-						color="#d34836"
-						isPrimary
-					/>
+						<ActionButton
+							title="Login com Facebook"
+							color="#3b5998"
+							isPrimary
+						/>
+						<ActionButton
+							title="Login com Google"
+							color="#d34836"
+							isPrimary
+						/>
+					</View>
+
 				</Container>
 			</KeyboardAvoidingView>
 		);
