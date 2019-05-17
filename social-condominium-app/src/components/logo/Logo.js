@@ -1,19 +1,15 @@
 import React from 'react'
-import { LogoContainer, LogoImage, LogoImageLoggedIn, LogoContainerLoggedIn } from './styles'
+import { LogoImage, LogoImageLoggedIn } from './styles'
 
 
 export default Logo = ({ logged = false }) => {
   if (logged) {
     return (
-      <LogoContainerLoggedIn>
-        <LogoImageLoggedIn source={require('../../assets/logo_bg.png')} resizeMode="contain" />
-      </LogoContainerLoggedIn>
+      <LogoImageLoggedIn source={require('../../assets/logo_bg.png')} resizeMode="contain" />
     )
   } else {
     return (
-      <LogoContainer>
-        <LogoImage  source={require('../../assets/logo_bg.png')} resizeMode="contain" />
-      </LogoContainer>
+      <LogoImage  source={require('../../assets/logo_bg.png')} resizeMode="contain" />
     )
   }
 }

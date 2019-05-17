@@ -3,10 +3,10 @@ import { Alert } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
 import InpuTypeText from '../../components/inputs/InpuTypeText'
 import ActionButton from '../../components/button/ActionButton';
-import Logo from '../../components/logo/Logo';
 import { Container } from '../../styles/styles'
 import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
+import Header from '../../components/header/Header';
 
 class RegisterScreen extends Component {
 
@@ -58,9 +58,6 @@ class RegisterScreen extends Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" enabled>
-        <Container>
-          <Logo />
-        </Container>
         <Container>
           <InpuTypeText
             stateValue={this.state.first_name}

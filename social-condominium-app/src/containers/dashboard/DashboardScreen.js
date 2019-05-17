@@ -6,10 +6,8 @@ import { Container } from '../../styles/styles'
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from "react-redux";
 import { clearFields } from '../../actions/actions'
-import Logo from '../../components/logo/Logo';
 
 class DashboardScreen extends Component {
-
 
     state = {
         name: null
@@ -42,7 +40,6 @@ class DashboardScreen extends Component {
 
         return (
             <Container>
-                <Logo logged />
                 <Card title={`Olá ${this.state.name}`}>
                     <Button title="Gerenciar condomínios" />
                 </Card>
@@ -59,4 +56,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(DashboardScreen)
-// export default DashboardScreen

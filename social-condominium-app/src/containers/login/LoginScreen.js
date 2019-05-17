@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, Text, View } from 'react-native';
 import { KeyboardAvoidingView, ActivityIndicator } from 'react-native';
-import Logo from '../../components/logo/Logo';
 import ActionButton from '../../components/button/ActionButton';
 import InputTypeText from '../../components/inputs/InpuTypeText';
 import { Title, Container } from '../../styles/styles';
@@ -11,7 +10,6 @@ import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
 
 class LoginScreen extends Component {
-
 
 	state = {
 		loggedIn: null
@@ -91,7 +89,6 @@ class LoginScreen extends Component {
 		return (
 			<KeyboardAvoidingView style behavior="padding" enabled>
 				<Container>
-					<Logo />
 					{loggedIn === null &&
 						<ActivityIndicator size="large" color="#d33028" />
 					}
