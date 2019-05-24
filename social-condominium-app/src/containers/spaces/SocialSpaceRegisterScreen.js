@@ -28,7 +28,7 @@ const createFormData = (photo, body) => {
     return data;
 }
 
-class SocialSpaceRegister extends Component {
+class SocialSpaceRegisterScreen extends Component {
     state = {
         space_name: '',
         space_photo: null,
@@ -114,4 +114,4 @@ const mapStateToProps = state => ({});
 export default connect(
   mapStateToProps,
   // mapDispatchToProps
-)(SocialSpaceRegister);
+)(SocialSpaceRegisterScreen);
