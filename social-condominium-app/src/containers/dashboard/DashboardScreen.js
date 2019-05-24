@@ -42,6 +42,10 @@ class DashboardScreen extends Component {
             <Container>
                 <Card title={`Olá ${this.state.name}`}>
                     <Button title="Gerenciar condomínios" />
+                    <Button
+                        title="Cadastrar Espaços Sociais"
+                        onPress={() => this.props.navigation.navigate('SocialSpaceRegister')}
+                    />
                 </Card>
                 <Button title="Sair" onPress={this.logout} />
             </Container>

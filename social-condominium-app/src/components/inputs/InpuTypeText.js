@@ -1,7 +1,7 @@
 import React from 'react'
 import { InputText } from './styles'
 
-const InpuTypeText = ({ stateValue, name, placeholder, autoCapitalize, keyboardType, onChange, secureTextEntry, onSubmitEditing }) => {
+const InpuTypeText = ({ stateValue, name, placeholder, autoCapitalize, keyboardType, onChange, secureTextEntry, onSubmitEditing, multiline, numberOfLines }) => {
   return (
     <InputText
         value={stateValue}
@@ -10,6 +10,8 @@ const InpuTypeText = ({ stateValue, name, placeholder, autoCapitalize, keyboardT
         autoCapitalize={autoCapitalize}
         keyboardType={keyboardType}
         onChangeText={onChange}
+        numberOfLines={numberOfLines}
+        multiline={multiline}
         secureTextEntry={secureTextEntry}
         onSubmitEditing={onSubmitEditing}
     />
@@ -18,7 +20,8 @@ const InpuTypeText = ({ stateValue, name, placeholder, autoCapitalize, keyboardT
 
 InpuTypeText.defaultProps = {
   secureTextEntry: false,
-  onSubmitEditing: () => {}
+  onSubmitEditing: () => {},
+  multiline: false
 }
 
 export default InpuTypeText

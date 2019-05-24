@@ -32,15 +32,8 @@ const Menu = () => {
         onPress={() => onItemSelected('About')}
         style={styles.item}
       >
-        About
-      </Text>
-
-      <Text
-        onPress={() => onItemSelected('Contacts')}
-        style={styles.item}
-      >
-        Contacts
-      </Text>
+          Cadastrar Espaço Social
+        </Text>
     </ScrollView>
   )
 }
