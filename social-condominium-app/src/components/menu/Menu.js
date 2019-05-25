@@ -25,17 +25,19 @@ const styles = StyleSheet.create({
     },
 });
 
-const Menu = () => {
-  return (
-    <ScrollView scrollsToTop={false} style={styles.menu}>
-      <Text
-        onPress={() => onItemSelected('About')}
-        style={styles.item}
-      >
-          Cadastrar Espaço Social
-        </Text>
-    </ScrollView>
-  )
+class Menu extends React.Component {
+  render() {
+    return (
+      <ScrollView scrollsToTop={false} style={styles.menu}>
+        <Text
+          onPress={() => this.props.navigation.push('SocialSpaceRegister')}
+          style={styles.item}
+        >
+            Cadastrar Espaço Social
+          </Text>
+      </ScrollView>
+    )
+  }
 }
 
 export default Menu
