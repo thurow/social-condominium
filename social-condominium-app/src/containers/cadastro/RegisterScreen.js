@@ -31,7 +31,7 @@ class RegisterScreen extends Component {
         lastName: this.state.last_name
       })
       await this.storeData(authentication);
-      this.props.navigation.navigate('Dashboard')
+      this.props.navigation.push('Dashboard')
     } catch (error) {
       console.log(error)
       const isPasswordError = error.message.includes('password')
@@ -58,6 +58,7 @@ class RegisterScreen extends Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" enabled>
+        <Header />
         <Container>
           <InpuTypeText
             stateValue={this.state.first_name}

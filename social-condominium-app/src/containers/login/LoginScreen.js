@@ -3,11 +3,13 @@ import { Alert, Text, View } from 'react-native';
 import { KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import ActionButton from '../../components/button/ActionButton';
 import InputTypeText from '../../components/inputs/InpuTypeText';
+import Header from '../../components/header/Header';
 import { Title, Container } from '../../styles/styles';
 import { connect } from "react-redux";
 import * as actions from '../../actions/actions'
 import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 class LoginScreen extends Component {
 
@@ -62,7 +64,11 @@ class LoginScreen extends Component {
 					lastName: user.get('lastName')
 				}
 				await this.storeData(userProfile);
-				this.props.navigation.navigate('Dashboard')
+				const resetAction = StackActions.reset({
+					index: 0,
+					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+				});
+				this.props.navigation.dispatch(resetAction);
 			}
 		} catch (error) {
 			console.log(error);
@@ -75,7 +81,11 @@ class LoginScreen extends Component {
 
 		setTimeout(() => {
 			if (loggedIn) {
-				this.props.navigation.navigate('Dashboard')
+				const resetAction = StackActions.reset({
+					index: 0,
+					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+				});
+				this.props.navigation.dispatch(resetAction);
 			}
 			this.setState({ loggedIn })
 		}, 2000) //Demorar = Credibilidade
@@ -84,10 +94,11 @@ class LoginScreen extends Component {
 
 	render() {
 		const { loggedIn } = this.state
-		const { navigate } = this.props.navigation;
+		const { push } = this.props.navigation;
 		const { email, password, onChangeEmail, onChangePassword } = this.props;
 		return (
 			<KeyboardAvoidingView style behavior="padding" enabled>
+				<Header />
 				<Container>
 					{loggedIn === null &&
 						<ActivityIndicator size="large" color="#d33028" />
@@ -111,7 +122,7 @@ class LoginScreen extends Component {
 							onSubmitEditing={this._submitForm}
 						/>
 						<ActionButton action={this._submitForm} title="Entrar" isPrimary />
-						<ActionButton action={() => navigate('Register')}
+						<ActionButton action={() => push('Register')}
 							title="Cadastre-se" />
 						<Text>ou</Text>
 						{/**
