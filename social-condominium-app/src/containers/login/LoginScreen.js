@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import * as actions from '../../actions/actions'
 import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 class LoginScreen extends Component {
 
@@ -63,7 +64,11 @@ class LoginScreen extends Component {
 					lastName: user.get('lastName')
 				}
 				await this.storeData(userProfile);
-				this.props.navigation.push('Dashboard')
+				const resetAction = StackActions.reset({
+					index: 0,
+					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+				});
+				this.props.navigation.dispatch(resetAction);
 			}
 		} catch (error) {
 			console.log(error);
@@ -76,7 +81,11 @@ class LoginScreen extends Component {
 
 		setTimeout(() => {
 			if (loggedIn) {
-				this.props.navigation.push('Dashboard')
+				const resetAction = StackActions.reset({
+					index: 0,
+					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+				});
+				this.props.navigation.dispatch(resetAction);
 			}
 			this.setState({ loggedIn })
 		}, 2000) //Demorar = Credibilidade

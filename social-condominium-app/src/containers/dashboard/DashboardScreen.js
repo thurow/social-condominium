@@ -39,11 +39,11 @@ class DashboardScreen extends Component {
     logout = async () => {
         await AsyncStorage.clear()
         this.props.onLogoutAction()
-        this.props.navigation.navigate('Home')
+        this.props.navigation.push('Home')
     }
 
 
-    async componentWillMount() {
+    async componentDidMount() {
         const user = await this.getUserData()
         this.setState({ name: user.firstName })
     }

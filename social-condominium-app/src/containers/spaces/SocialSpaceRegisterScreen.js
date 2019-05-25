@@ -98,12 +98,14 @@ class SocialSpaceRegisterScreen extends Component {
                             autoCapitalize='words'
                             keyboardType='default'
                             name='space_name'
+                            placeholder='Nome do Espaço'
                             stateValue={this.state.space_name}
                             onChange={space_name => this.setState({ space_name })}
                         />
                         <InputTypeText
                             keyboardType='default'
                             name='space_description'
+                            placeholder='Descrição do Espaço'
                             multiline
                             numberOfLines={4}
                             stateValue={this.state.space_description}
@@ -116,7 +118,7 @@ class SocialSpaceRegisterScreen extends Component {
                                     resizeMode="contain"
                                     style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto'}}
                                 />
-                                <ActionButton title="Upload" action={this.handleUpload} />
+                                <ActionButton title="Salvar foto" action={this.handleUpload} />
                             </React.Fragment>
                         )}
                         <ActionButton

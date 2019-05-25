@@ -13,4 +13,6 @@ export const LoggedContainer = styled.View`
     width: 100%;
     display: flex;
     background-color: #fff;
+    border-end-color: #333;
+    border-end-width: 1px;
 `
