@@ -66,126 +66,143 @@ class LoginScreen extends Component {
 	googleSignIn = async () => {
 		try {
 			await GoogleSignin.hasPlayServices();
-			const userInfo = await GoogleSignin.signIn();
-			console.log(userInfo)
+			const { idToken, serverAuthCode } = await GoogleSignin.signIn();
+			const authCredential = firebase.auth.GoogleAuthProvider.credential(idToken, serverAuthCode)
+			const userCredential = await firebase.auth().signInWithCredential(authCredential)
+			console.log(userCredential)
 		} catch (error) {
 			console.log(error)
 			console.log(error.code)
 		}
 	}
 
-	_submitForm = async () => {
+	emailSignIn = async () => {
 		const { email, password } = this.props;
 		const validInputs = this._validateEmptyInputs();
-		try {
-			if (validInputs) {
-				const authentication = await firebase.auth().signInWithEmailAndPassword(email, password);
-				const user = await firebase.firestore().collection('users').doc(authentication.user.uid).get()
-				const userProfile = {
-					uid: authentication.user.uid,
-					email: email,
-					firstName: user.get('firstName'),
-					lastName: user.get('lastName')
-				}
-				await this.storeData(userProfile);
-				const resetAction = StackActions.reset({
-					index: 0,
-					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
-				});
-				this.props.navigation.dispatch(resetAction);
+
+		if (validInputs) {
+			const authentication = await firebase.auth().signInWithEmailAndPassword(email, password);
+			const user = await firebase.firestore().collection('users').doc(authentication.user.uid).get()
+			const userProfile = {
+				uid: authentication.user.uid,
+				email: email,
+				firstName: user.get('firstName'),
+				lastName: user.get('lastName')
 			}
-		} catch (error) {
-			console.log(error);
-			Alert.alert('E-mail ou senha estão incorretos');
 		}
-	};
 
-	async componentDidMount() {
-		let loggedIn = await this.isUserLoggedIn()
-
-		setTimeout(() => {
-			if (loggedIn) {
-				const resetAction = StackActions.reset({
-					index: 0,
-					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
-				});
-				this.props.navigation.dispatch(resetAction);
-			}
-			this.setState({ loggedIn })
-		}, 100) //Demorar = Credibilidade
-
-	}
-
-	render() {
-		const { loggedIn } = this.state
-		const { push } = this.props.navigation;
-		const { email, password, onChangeEmail, onChangePassword } = this.props;
-		return (
-			<KeyboardAvoidingView style behavior="padding" enabled>
-				<Header />
-				<Container>
-					{loggedIn === null &&
-						<ActivityIndicator size="large" color="#d33028" />
+		login = async (type = 'email') => {
+			const { email, password } = this.props;
+			const validInputs = this._validateEmptyInputs();
+			try {
+				if (validInputs) {
+					const authentication = await firebase.auth().signInWithEmailAndPassword(email, password);
+					const user = await firebase.firestore().collection('users').doc(authentication.user.uid).get()
+					const userProfile = {
+						uid: authentication.user.uid,
+						email: email,
+						firstName: user.get('firstName'),
+						lastName: user.get('lastName')
 					}
-					<View style={loggedIn === null ? { display: 'none' } : {}}>
-						<Title>Faça seu Login</Title>
-						<InputTypeText
-							onChange={(value) => onChangeEmail(value)}
-							stateValue={email}
-							name="email"
-							placeholder="Digite seu e-mail"
-							autoCapitalize="none"
-							keyboardType="email-address"
-						/>
-						<InputTypeText
-							stateValue={password}
-							name="password"
-							placeholder="Sua Senha"
-							secureTextEntry
-							onChange={(password) => onChangePassword(password)}
-							onSubmitEditing={this._submitForm}
-						/>
-						<ActionButton action={this._submitForm} title="Entrar" isPrimary />
-						<ActionButton action={() => push('Register')}
-							title="Cadastre-se" />
-						<Text>ou</Text>
-						{/**
+					await this.storeData(userProfile);
+					const resetAction = StackActions.reset({
+						index: 0,
+						actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+					});
+					this.props.navigation.dispatch(resetAction);
+				}
+			} catch (error) {
+				console.log(error);
+				Alert.alert('E-mail ou senha estão incorretos');
+			}
+		};
+
+		async componentDidMount() {
+			let loggedIn = await this.isUserLoggedIn()
+
+			setTimeout(() => {
+				if (loggedIn) {
+					const resetAction = StackActions.reset({
+						index: 0,
+						actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+					});
+					this.props.navigation.dispatch(resetAction);
+				}
+				this.setState({ loggedIn })
+			}, 100) //Demorar = Credibilidade
+
+		}
+
+		render() {
+			const { loggedIn } = this.state
+			const { push } = this.props.navigation;
+			const { email, password, onChangeEmail, onChangePassword } = this.props;
+			return (
+				<KeyboardAvoidingView style behavior="padding" enabled>
+					<Header />
+					<Container>
+						{loggedIn === null &&
+							<ActivityIndicator size="large" color="#d33028" />
+						}
+						<View style={loggedIn === null ? { display: 'none' } : {}}>
+							<Title>Faça seu Login</Title>
+							<InputTypeText
+								onChange={(value) => onChangeEmail(value)}
+								stateValue={email}
+								name="email"
+								placeholder="Digite seu e-mail"
+								autoCapitalize="none"
+								keyboardType="email-address"
+							/>
+							<InputTypeText
+								stateValue={password}
+								name="password"
+								placeholder="Sua Senha"
+								secureTextEntry
+								onChange={(password) => onChangePassword(password)}
+								onSubmitEditing={this.login}
+							/>
+							<ActionButton action={this.login} title="Entrar" isPrimary />
+							<ActionButton action={() => push('Register')}
+								title="Cadastre-se" />
+							<Text>ou</Text>
+							{/**
 					@TODO transformar botões em somente logo, sem texto
 					*/}
-						<ActionButton
-							title="Login com Facebook"
-							color="#3b5998"
-							isPrimary
-						/>
-						<ActionButton
-							title="Login com Google"
-							color="#d34836"
-							action={this.googleSignIn}
-						/>
-					</View>
+							<ActionButton
+								title="Login com Facebook"
+								color="#3b5998"
+								isPrimary
+							/>
+							<ActionButton
+								title="Login com Google"
+								color="#d34836"
+								action={this.googleSignIn}
+							/>
+						</View>
 
-				</Container>
-			</KeyboardAvoidingView>
-		);
+					</Container>
+				</KeyboardAvoidingView>
+			);
+		}
 	}
-}
 
-LoginScreen.navigationOptions = {
-	title: 'Faça Login'
-}
-
-const mapStateToProps = state => {
-	return {
-		email: state.loginState.email,
-		password: state.loginState.password
+	LoginScreen.navigationOptions = {
+		title: 'Faça Login'
 	}
-}
 
-const mapDispatchToProps = dispatch => {
-	return {
-		onChangeEmail: (newValue) => dispatch(actions.changeEmail(newValue)),
-		onChangePassword: (newValue) => dispatch(actions.changePassword(newValue))
+	const mapStateToProps = state => {
+		return {
+			email: state.loginState.email,
+			password: state.loginState.password
+		}
 	}
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
+	const mapDispatchToProps = dispatch => {
+		return {
+			onChangeEmail: (newValue) => dispatch(actions.changeEmail(newValue)),
+			onChangePassword: (newValue) => dispatch(actions.changePassword(newValue))
+		}
+	}
+
+	export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
