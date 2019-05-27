@@ -64,16 +64,18 @@ class LoginScreen extends Component {
 	}
 
 	googleSignIn = async () => {
-		try {
-			await GoogleSignin.hasPlayServices();
-			const { idToken, serverAuthCode } = await GoogleSignin.signIn();
-			const authCredential = firebase.auth.GoogleAuthProvider.credential(idToken, serverAuthCode)
-			const userCredential = await firebase.auth().signInWithCredential(authCredential)
-			console.log(userCredential)
-		} catch (error) {
-			console.log(error)
-			console.log(error.code)
+		await GoogleSignin.hasPlayServices();
+		const { idToken, serverAuthCode } = await GoogleSignin.signIn();
+		const authCredential = firebase.auth.GoogleAuthProvider.credential(idToken, serverAuthCode)
+		console.log('auth credential', authCredential)
+		const userCredential = await firebase.auth().signInWithCredential(authCredential)
+		console.log('user credential', userCredential)
+		const userProfile = {
+
 		}
+
+		//todo save on db user collection
+		return userProfile
 	}
 
 	emailSignIn = async () => {
@@ -89,120 +91,120 @@ class LoginScreen extends Component {
 				firstName: user.get('firstName'),
 				lastName: user.get('lastName')
 			}
+			return userProfile
+		}
+		return null;
+	}
+
+	login = async (type = 'email') => {
+		let signIn = null
+		if (type === 'google') {
+			signIn = this.googleSignIn
+		} else {
+			signIn = this.emailSignIn
 		}
 
-		login = async (type = 'email') => {
-			const { email, password } = this.props;
-			const validInputs = this._validateEmptyInputs();
-			try {
-				if (validInputs) {
-					const authentication = await firebase.auth().signInWithEmailAndPassword(email, password);
-					const user = await firebase.firestore().collection('users').doc(authentication.user.uid).get()
-					const userProfile = {
-						uid: authentication.user.uid,
-						email: email,
-						firstName: user.get('firstName'),
-						lastName: user.get('lastName')
-					}
-					await this.storeData(userProfile);
-					const resetAction = StackActions.reset({
-						index: 0,
-						actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
-					});
-					this.props.navigation.dispatch(resetAction);
-				}
-			} catch (error) {
-				console.log(error);
-				Alert.alert('E-mail ou senha estão incorretos');
+		try {
+			const userProfile = await signIn()
+			await this.storeData(userProfile);
+			const resetAction = StackActions.reset({
+				index: 0,
+				actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+			});
+			this.props.navigation.dispatch(resetAction);
+		} catch (error) {
+			console.log(error);
+			Alert.alert('Não foi possível autenticar-se, verifique suas credenciais');
+		}
+	};
+
+	componentDidMount() {
+		let loggedIn = await this.isUserLoggedIn()
+
+		setTimeout(() => {
+			if (loggedIn) {
+				const resetAction = StackActions.reset({
+					index: 0,
+					actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+				});
+				this.props.navigation.dispatch(resetAction);
 			}
-		};
+			this.setState({ loggedIn })
+		}, 100) //Demorar = Credibilidade
 
-		async componentDidMount() {
-			let loggedIn = await this.isUserLoggedIn()
+	}
 
-			setTimeout(() => {
-				if (loggedIn) {
-					const resetAction = StackActions.reset({
-						index: 0,
-						actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
-					});
-					this.props.navigation.dispatch(resetAction);
-				}
-				this.setState({ loggedIn })
-			}, 100) //Demorar = Credibilidade
-
-		}
-
-		render() {
-			const { loggedIn } = this.state
-			const { push } = this.props.navigation;
-			const { email, password, onChangeEmail, onChangePassword } = this.props;
-			return (
-				<KeyboardAvoidingView style behavior="padding" enabled>
-					<Header />
-					<Container>
-						{loggedIn === null &&
-							<ActivityIndicator size="large" color="#d33028" />
-						}
-						<View style={loggedIn === null ? { display: 'none' } : {}}>
-							<Title>Faça seu Login</Title>
-							<InputTypeText
-								onChange={(value) => onChangeEmail(value)}
-								stateValue={email}
-								name="email"
-								placeholder="Digite seu e-mail"
-								autoCapitalize="none"
-								keyboardType="email-address"
-							/>
-							<InputTypeText
-								stateValue={password}
-								name="password"
-								placeholder="Sua Senha"
-								secureTextEntry
-								onChange={(password) => onChangePassword(password)}
-								onSubmitEditing={this.login}
-							/>
-							<ActionButton action={this.login} title="Entrar" isPrimary />
-							<ActionButton action={() => push('Register')}
-								title="Cadastre-se" />
-							<Text>ou</Text>
-							{/**
+	render() {
+		const { loggedIn } = this.state
+		const { push } = this.props.navigation;
+		const { email, password, onChangeEmail, onChangePassword } = this.props;
+		return (
+			<KeyboardAvoidingView style behavior="padding" enabled>
+				<Header />
+				<Container>
+					{loggedIn === null &&
+						<ActivityIndicator size="large" color="#d33028" />
+					}
+					<View style={loggedIn === null ? { display: 'none' } : {}}>
+						<Title>Faça seu Login</Title>
+						<InputTypeText
+							onChange={(value) => onChangeEmail(value)}
+							stateValue={email}
+							name="email"
+							placeholder="Digite seu e-mail"
+							autoCapitalize="none"
+							keyboardType="email-address"
+						/>
+						<InputTypeText
+							stateValue={password}
+							name="password"
+							placeholder="Sua Senha"
+							secureTextEntry
+							onChange={(password) => onChangePassword(password)}
+							onSubmitEditing={this.login}
+						/>
+						<ActionButton action={this.login} title="Entrar" isPrimary />
+						<ActionButton action={() => push('Register')}
+							title="Cadastre-se" />
+						<Text>ou</Text>
+						{/**
 					@TODO transformar botões em somente logo, sem texto
 					*/}
-							<ActionButton
-								title="Login com Facebook"
-								color="#3b5998"
-								isPrimary
-							/>
-							<ActionButton
-								title="Login com Google"
-								color="#d34836"
-								action={this.googleSignIn}
-							/>
-						</View>
+						<ActionButton
+							title="Login com Facebook"
+							color="#3b5998"
+							isPrimary
+						/>
+						<ActionButton
+							title="Login com Google"
+							color="#d34836"
+							action={this.googleSignIn('google')}
+						/>
+					</View>
 
-					</Container>
-				</KeyboardAvoidingView>
-			);
-		}
+				</Container>
+			</KeyboardAvoidingView>
+		);
 	}
+}
 
-	LoginScreen.navigationOptions = {
-		title: 'Faça Login'
+
+LoginScreen.navigationOptions = {
+	title: 'Faça Login'
+}
+
+const mapStateToProps = state => {
+	return {
+		email: state.loginState.email,
+		password: state.loginState.password
 	}
+}
 
-	const mapStateToProps = state => {
-		return {
-			email: state.loginState.email,
-			password: state.loginState.password
-		}
+const mapDispatchToProps = dispatch => {
+	return {
+		onChangeEmail: (newValue) => dispatch(actions.changeEmail(newValue)),
+		onChangePassword: (newValue) => dispatch(actions.changePassword(newValue))
 	}
+}
 
-	const mapDispatchToProps = dispatch => {
-		return {
-			onChangeEmail: (newValue) => dispatch(actions.changeEmail(newValue)),
-			onChangePassword: (newValue) => dispatch(actions.changePassword(newValue))
-		}
-	}
-
-	export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
