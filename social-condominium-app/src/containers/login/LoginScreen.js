@@ -67,11 +67,11 @@ class LoginScreen extends Component {
 		await GoogleSignin.hasPlayServices();
 		const { idToken, serverAuthCode } = await GoogleSignin.signIn();
 		const authCredential = firebase.auth.GoogleAuthProvider.credential(idToken, serverAuthCode)
-		console.log('auth credential', authCredential)
-		const userCredential = await firebase.auth().signInWithCredential(authCredential)
-		console.log('user credential', userCredential)
+		const {user} = await firebase.auth().signInWithCredential(authCredential)
 		const userProfile = {
-
+			uid: user.uid,
+			email: user.email,
+			firstName: user.displayName
 		}
 
 		//todo save on db user collection
@@ -118,7 +118,7 @@ class LoginScreen extends Component {
 		}
 	};
 
-	componentDidMount() {
+	async componentDidMount() {
 		let loggedIn = await this.isUserLoggedIn()
 
 		setTimeout(() => {
@@ -178,7 +178,7 @@ class LoginScreen extends Component {
 						<ActionButton
 							title="Login com Google"
 							color="#d34836"
-							action={this.googleSignIn('google')}
+							action={() => this.login('google')}
 						/>
 					</View>
 
