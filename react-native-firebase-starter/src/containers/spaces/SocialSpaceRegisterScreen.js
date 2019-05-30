@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React, { Component, Fragment } from 'react';
 import { Image, KeyboardAvoidingView } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import ActionButton from '../../components/button/ActionButton';
@@ -10,6 +9,7 @@ import Header from '../../components/header/Header';
 import SideMenu from 'react-native-side-menu';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { SafeAreaView } from 'react-navigation';
 
 // import { Container } from './styles';
 
@@ -83,52 +83,56 @@ class SocialSpaceRegisterScreen extends Component {
         const menu = <Menu navigation={navigation} />
 
         return (
-            <SideMenu
-                menu={menu}
-                isOpen={this.state.isOpen}
-                disableGestures
-                menuPosition='right'
-                onChange={isOpen => this.updateMenuState(isOpen)}
-            >
-                <Header logged toggleNav={() => this.toggleNav()} />
-                <KeyboardAvoidingView behavior="padding" enabled>
-                    <Container>
-                        <Title>Novo Espaço Social</Title>
-                        <InputTypeText
-                            autoCapitalize='words'
-                            keyboardType='default'
-                            name='space_name'
-                            placeholder='Nome do Espaço'
-                            stateValue={this.state.space_name}
-                            onChange={space_name => this.setState({ space_name })}
-                        />
-                        <InputTypeText
-                            keyboardType='default'
-                            name='space_description'
-                            placeholder='Descrição do Espaço'
-                            multiline
-                            numberOfLines={4}
-                            stateValue={this.state.space_description}
-                            onChange={space_description => this.setState({ space_description })}
-                        />
-                        {space_photo && (
-                            <React.Fragment>
-                                <Image
-                                    source={{ uri: space_photo.uri }}
-                                    resizeMode="contain"
-                                    style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto'}}
+            <Fragment>
+                <SafeAreaView style={{ flex: 0, backgroundColor: '#eb4444' }} />
+                <SafeAreaView style={{ flex: 1, backgroundColor: '#3b5998' }}>
+                    <SideMenu
+                        menu={menu}
+                        isOpen={this.state.isOpen}
+                        menuPosition='right'
+                        onChange={isOpen => this.updateMenuState(isOpen)}
+                    >
+                        <Header logged toggleNav={() => this.toggleNav()} />
+                        <KeyboardAvoidingView behavior="padding" enabled>
+                            <Container>
+                                <Title>Novo Espaço Social</Title>
+                                <InputTypeText
+                                    autoCapitalize='words'
+                                    keyboardType='default'
+                                    name='space_name'
+                                    placeholder='Nome do Espaço'
+                                    stateValue={this.state.space_name}
+                                    onChange={space_name => this.setState({ space_name })}
                                 />
-                                <ActionButton title="Salvar foto" action={this.handleUpload} />
-                            </React.Fragment>
-                        )}
-                        <ActionButton
-                            title='Selecionar Foto do Espaço'
-                            action={this.handleChoosePhoto}
-                            color="#3b5998"
-                        />
-                    </Container>
-                </KeyboardAvoidingView>
-            </SideMenu>
+                                <InputTypeText
+                                    keyboardType='default'
+                                    name='space_description'
+                                    placeholder='Descrição do Espaço'
+                                    multiline
+                                    numberOfLines={4}
+                                    stateValue={this.state.space_description}
+                                    onChange={space_description => this.setState({ space_description })}
+                                />
+                                {space_photo && (
+                                    <Fragment>
+                                        <Image
+                                            source={{ uri: space_photo.uri }}
+                                            resizeMode="contain"
+                                            style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto'}}
+                                        />
+                                        <ActionButton title="Salvar foto" action={this.handleUpload} />
+                                    </Fragment>
+                                )}
+                                <ActionButton
+                                    title='Selecionar Foto do Espaço'
+                                    action={this.handleChoosePhoto}
+                                    color="#3b5998"
+                                />
+                            </Container>
+                        </KeyboardAvoidingView>
+                    </SideMenu>
+                </SafeAreaView>
+            </Fragment>
         )
     }
 }
