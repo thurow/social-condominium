@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card } from 'react-native-elements'
-import { Button } from 'react-native'
+import { Button, StyleSheet, Text } from 'react-native'
 import { Container } from '../../styles/styles'
 import Menu from '../../components/menu/Menu';
 import Header from '../../components/header/Header';
@@ -8,6 +8,13 @@ import SideMenu from 'react-native-side-menu';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from "react-redux";
 import { clearFields } from '../../actions/actions'
+import ActionButton from '../../components/button/ActionButton';
+
+const styles = StyleSheet.create({
+    item: {
+        fontSize: 20
+    }
+});
 
 class DashboardScreen extends Component {
 
@@ -18,13 +25,13 @@ class DashboardScreen extends Component {
 
     toggleNav() {
         this.setState({
-          isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen
         })
-      }
+    }
 
-      updateMenuState(isOpen) {
+    updateMenuState(isOpen) {
         this.setState({ isOpen });
-      }
+    }
 
     getUserData = async () => {
         try {
@@ -62,16 +69,34 @@ class DashboardScreen extends Component {
             >
                 <Header logged toggleNav={() => this.toggleNav()} />
                 <Container>
-                    <Card title={`Olá ${this.state.name}`}>
-                        <Button title="Gerenciar condomínios" />
-                        <Button
-                            title="Cadastrar Espaços Sociais"
-                            onPress={() => navigation.push('SocialSpaceRegister')}
-                        />
+                    <Card>
+                        <Text
+                            //onPress={() => this.props.navigation.push('PostRegister')}
+                            style={styles.item}
+                        >
+                            Condomínios
+                        </Text>
                     </Card>
-                    <Button title="Sair" onPress={this.logout} />
+                    <Card>
+                        <Text
+                            onPress={() => this.props.navigation.push('SocialSpaceRegister')}
+                            style={styles.item}
+                        >
+                            Espaços sociais
+                        </Text>
+                    </Card>
+                    <Card containerStyle={{marginBottom: 20}}>
+                        <Text
+                            onPress={() => this.props.navigation.push('PostRegister')}
+                            style={styles.item}
+                        >
+                            Criar publicação
+                        </Text>
+                    </Card>
+
+                    <ActionButton action={this.logout} title="Sair" color="red" />
                 </Container>
-          </SideMenu>
+            </SideMenu>
         )
     }
 }
