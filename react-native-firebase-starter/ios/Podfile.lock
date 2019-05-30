@@ -218,6 +218,7 @@ DEPENDENCIES:
   - Firebase/Performance (~> 5.20.1)
   - Firebase/RemoteConfig (~> 5.20.1)
   - Firebase/Storage (~> 5.20.1)
+  - GoogleSignIn (~> 4.4.0)
   - React (from `../node_modules/react-native`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
@@ -312,6 +313,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   yoga: 1a492113f66a35e9e583bb0434f4b8cc668dd839
 
-PODFILE CHECKSUM: 4a6563ea4847803536ba710bc1a1bf00ca912f0d
+PODFILE CHECKSUM: ac9e2c60f55c80bbfc1b12a4e725bde84ecc4211
 
 COCOAPODS: 1.6.1

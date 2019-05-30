@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Card } from 'react-native-elements'
 import { Button } from 'react-native'
 import { Container } from '../../styles/styles'
@@ -8,6 +8,7 @@ import SideMenu from 'react-native-side-menu';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from "react-redux";
 import { clearFields } from '../../actions/actions'
+import { SafeAreaView, StackActions, NavigationActions } from 'react-navigation';
 
 class DashboardScreen extends Component {
 
@@ -37,9 +38,17 @@ class DashboardScreen extends Component {
     }
 
     logout = async () => {
-        await AsyncStorage.clear()
-        this.props.onLogoutAction()
-        this.props.navigation.push('Home')
+        try {
+            await AsyncStorage.clear()
+            this.props.onLogoutAction()
+            const resetAction = StackActions.reset({
+                index: 0,
+                actions: [NavigationActions.navigate({ routeName: 'Home' })],
+            });
+            this.props.navigation.dispatch(resetAction);
+        } catch (err) {
+            console.log(err)
+        }
     }
 
 
@@ -53,26 +62,30 @@ class DashboardScreen extends Component {
 
         const menu = <Menu navigation={navigation} />
         return (
-            <SideMenu
-                menu={menu}
-                isOpen={this.state.isOpen}
-                disableGestures
-                menuPosition='right'
-                onChange={isOpen => this.updateMenuState(isOpen)}
-            >
-                <Header logged toggleNav={() => this.toggleNav()} />
-                <Container>
-                    <Card title={`Olá ${this.state.name}`}>
-                        <Button title="Gerenciar condomínios" />
-                        <Button
-                            title="Cadastrar Espaços Sociais"
-                            onPress={() => navigation.push('SocialSpaceRegister')}
-                        />
-                    </Card>
-                    <Button title="Sair" onPress={this.logout} />
-                </Container>
-          </SideMenu>
-        )
+            <Fragment>
+                <SafeAreaView style={{ flex: 0, backgroundColor: '#eb4444' }} />
+                <SafeAreaView style={{ flex: 1, backgroundColor: '#3b5998' }}>
+                    <SideMenu
+                        menu={menu}
+                        isOpen={this.state.isOpen}
+                        menuPosition='right'
+                        onChange={isOpen => this.updateMenuState(isOpen)}
+                    >
+                        <Header logged toggleNav={() => this.toggleNav()} />
+                        <Container>
+                            <Card title={`Olá ${this.state.name}`}>
+                                <Button title="Gerenciar condomínios" />
+                                <Button
+                                    title="Cadastrar Espaços Sociais"
+                                    onPress={() => navigation.push('SocialSpaceRegister')}
+                                />
+                            </Card>
+                            <Button title="Sair" onPress={this.logout} />
+                        </Container>
+                    </SideMenu>
+                </SafeAreaView>
+             </Fragment>
+           )
     }
 }
 
