@@ -12,8 +12,8 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* SocialCondominiumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SocialCondominiumTests.m */; };
-		039963B89D919933DA02DD1D /* libPods-SocialCondominium-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A114661868ACFA83CCA60B3 /* libPods-SocialCondominium-tvOS.a */; };
+		00E356F31AD99517003FC87E /* MyCondominiumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyCondominiumTests.m */; };
+		039963B89D919933DA02DD1D /* libPods-MyCondominium-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A114661868ACFA83CCA60B3 /* libPods-MyCondominium-tvOS.a */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -24,6 +24,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		16113F8F25944F359B9FD1C9 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9D81B0878F541FAA8382F00 /* SimpleLineIcons.ttf */; };
+		1C26E8CCE9774281A25AA910 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 473D8B970C9D43BC93AD8073 /* FontAwesome5_Solid.ttf */; };
+		27760E91229B6FDF00F5F127 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27760E6A229B6FDF00F5F127 /* GoogleService-Info.plist */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -35,16 +38,28 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* SocialCondominiumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SocialCondominiumTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* MyCondominiumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyCondominiumTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		50FF6BE0229DF4B300EB903C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50FF6BDF229DF4B300EB903C /* GoogleService-Info.plist */; };
-		66F583A38C047519D1E18159 /* libPods-SocialCondominium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 599A1087F9C545123EFD61BE /* libPods-SocialCondominium.a */; };
+		3089BA2E2F08422F9CD44B75 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9629AB14B6643138F990992 /* MaterialIcons.ttf */; };
+		3E49DBF8C179441981E8E1DF /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B241954480F4FDDBE4A6C7B /* FontAwesome5_Brands.ttf */; };
+		59948F2FAD684EC0AD65183A /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A44F40EFD1EB487FAC356E41 /* EvilIcons.ttf */; };
+		66F583A38C047519D1E18159 /* libPods-MyCondominium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 599A1087F9C545123EFD61BE /* libPods-MyCondominium.a */; };
+		6B9B0E58FAB041F98E2A1930 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC5ADF601DD44D32A8077E6F /* Ionicons.ttf */; };
+		6BEACC2001E4478EAF08853A /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DD873E4B96C49D8A19F8CE1 /* FontAwesome5_Regular.ttf */; };
+		7EE45DF53230450BA56D8F75 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A48851D21D4447490CEBB7D /* Foundation.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8AEB10120B9847F8905B7DA1 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C97DD56AE46E45398AF70E2E /* libRNFirebase.a */; };
+		96DD4D441B9A478FA61291E6 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A1E42474B6449F69592D48C /* MaterialCommunityIcons.ttf */; };
+		9AD2A505621F40B6A2ABB46A /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F35D03B27884EE0BF61A06C /* Zocial.ttf */; };
+		9EB1972460284A878EE49EC7 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 547C7D8DE9C44FDFAD1DB44E /* FontAwesome.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		ADDA258B0C3DE0261C60A364 /* libPods-SocialCondominium-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B23455DE3C4D5673E7318E /* libPods-SocialCondominium-tvOSTests.a */; };
+		ADDA258B0C3DE0261C60A364 /* libPods-MyCondominium-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B23455DE3C4D5673E7318E /* libPods-MyCondominium-tvOSTests.a */; };
+		B25D0BAB00374B7791504360 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF57F02A05B34947B15DF186 /* Octicons.ttf */; };
+		CEF32BEB1F8E467D8A30A149 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91564767A93E4AB2B36AAB70 /* AntDesign.ttf */; };
+		DD1E829744E54C03AAB5A237 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84A7E7991EFE43059B5F94D0 /* Entypo.ttf */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
+		F316CECABB6349EC8557F818 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 213A52077A324D8790AF461C /* Feather.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +103,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = SocialCondominium;
+			remoteInfo = MyCondominium;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -111,12 +126,47 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		275947722261A42900BA95C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC6D6214B3E7000DD5AC8;
+			remoteInfo = jsi;
+		};
+		275947742261A42900BA95C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC73B214B45A300DD5AC8;
+			remoteInfo = jsiexecutor;
+		};
+		275947762261A42900BA95C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FB6214C9A0900B7C4FE;
+			remoteInfo = "jsi-tvOS";
+		};
+		275947782261A42900BA95C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
+			remoteInfo = "jsiexecutor-tvOS";
+		};
+		2759477D2261A42A00BA95C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C34C759D8274A5CB8F8E751 /* RNFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFirebase;
+		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "SocialCondominium-tvOS";
+			remoteInfo = "MyCondominium-tvOS";
 		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -258,41 +308,6 @@
 			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
 			remoteInfo = "cxxreact-tvOS";
 		};
-		50FF6BD2229DF4A600EB903C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDEBC6D6214B3E7000DD5AC8;
-			remoteInfo = jsi;
-		};
-		50FF6BD4229DF4A600EB903C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EDEBC73B214B45A300DD5AC8;
-			remoteInfo = jsiexecutor;
-		};
-		50FF6BD6229DF4A600EB903C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ED296FB6214C9A0900B7C4FE;
-			remoteInfo = "jsi-tvOS";
-		};
-		50FF6BD8229DF4A600EB903C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
-			remoteInfo = "jsiexecutor-tvOS";
-		};
-		50FF6BDD229DF4A600EB903C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C34C759D8274A5CB8F8E751 /* RNFirebase.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNFirebase;
-		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -337,40 +352,55 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* SocialCondominiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialCondominiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* MyCondominiumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCondominiumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* SocialCondominiumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialCondominiumTests.m; sourceTree = "<group>"; };
-		11B23455DE3C4D5673E7318E /* libPods-SocialCondominium-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocialCondominium-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* MyCondominiumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCondominiumTests.m; sourceTree = "<group>"; };
+		11B23455DE3C4D5673E7318E /* libPods-MyCondominium-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyCondominium-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* SocialCondominium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialCondominium.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SocialCondominium/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SocialCondominium/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* MyCondominium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCondominium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MyCondominium/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MyCondominium/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SocialCondominium/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SocialCondominium/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SocialCondominium/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyCondominium/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyCondominium/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MyCondominium/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* SocialCondominium-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SocialCondominium-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* SocialCondominium-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SocialCondominium-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DD873E4B96C49D8A19F8CE1 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		213A52077A324D8790AF461C /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		27760E6A229B6FDF00F5F127 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* MyCondominium-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyCondominium-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* MyCondominium-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyCondominium-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A114661868ACFA83CCA60B3 /* libPods-SocialCondominium-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocialCondominium-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		50FF6BDF229DF4B300EB903C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		599A1087F9C545123EFD61BE /* libPods-SocialCondominium.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SocialCondominium.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C04F7E60E3774814827066E /* Pods-SocialCondominium-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialCondominium-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialCondominium-tvOS/Pods-SocialCondominium-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		473D8B970C9D43BC93AD8073 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		4A114661868ACFA83CCA60B3 /* libPods-MyCondominium-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyCondominium-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F35D03B27884EE0BF61A06C /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		547C7D8DE9C44FDFAD1DB44E /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		599A1087F9C545123EFD61BE /* libPods-MyCondominium.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyCondominium.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B241954480F4FDDBE4A6C7B /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		5C04F7E60E3774814827066E /* Pods-MyCondominium-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCondominium-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCondominium-tvOS/Pods-MyCondominium-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		7A230A0DEF48DF21D545AA71 /* Pods-SocialCondominium-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialCondominium-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialCondominium-tvOS/Pods-SocialCondominium-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7A230A0DEF48DF21D545AA71 /* Pods-MyCondominium-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCondominium-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCondominium-tvOS/Pods-MyCondominium-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7A48851D21D4447490CEBB7D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		84A7E7991EFE43059B5F94D0 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		8A1E42474B6449F69592D48C /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		8C34C759D8274A5CB8F8E751 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
+		91564767A93E4AB2B36AAB70 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		A44F40EFD1EB487FAC356E41 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		B2121FE3F0701D7C33F213D3 /* Pods-SocialCondominium.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialCondominium.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialCondominium/Pods-SocialCondominium.release.xcconfig"; sourceTree = "<group>"; };
+		B2121FE3F0701D7C33F213D3 /* Pods-MyCondominium.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCondominium.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCondominium/Pods-MyCondominium.release.xcconfig"; sourceTree = "<group>"; };
+		BC5ADF601DD44D32A8077E6F /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		C9629AB14B6643138F990992 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		C97DD56AE46E45398AF70E2E /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
-		CA346B7E0D05342E8E702E1C /* Pods-SocialCondominium-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialCondominium-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialCondominium-tvOSTests/Pods-SocialCondominium-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D8E13BB553BB18534EEFFDDE /* Pods-SocialCondominium.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialCondominium.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialCondominium/Pods-SocialCondominium.debug.xcconfig"; sourceTree = "<group>"; };
+		CA346B7E0D05342E8E702E1C /* Pods-MyCondominium-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCondominium-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCondominium-tvOSTests/Pods-MyCondominium-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D8E13BB553BB18534EEFFDDE /* Pods-MyCondominium.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCondominium.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCondominium/Pods-MyCondominium.debug.xcconfig"; sourceTree = "<group>"; };
+		D9D81B0878F541FAA8382F00 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		DF57F02A05B34947B15DF186 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F2C89EE2F4607D097253AE26 /* Pods-SocialCondominium-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialCondominium-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialCondominium-tvOSTests/Pods-SocialCondominium-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		F2C89EE2F4607D097253AE26 /* Pods-MyCondominium-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCondominium-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyCondominium-tvOSTests/Pods-MyCondominium-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,7 +429,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				66F583A38C047519D1E18159 /* libPods-SocialCondominium.a in Frameworks */,
+				66F583A38C047519D1E18159 /* libPods-MyCondominium.a in Frameworks */,
 				8AEB10120B9847F8905B7DA1 /* libRNFirebase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +447,7 @@
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
-				039963B89D919933DA02DD1D /* libPods-SocialCondominium-tvOS.a in Frameworks */,
+				039963B89D919933DA02DD1D /* libPods-MyCondominium-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
-				ADDA258B0C3DE0261C60A364 /* libPods-SocialCondominium-tvOSTests.a in Frameworks */,
+				ADDA258B0C3DE0261C60A364 /* libPods-MyCondominium-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,13 +505,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* SocialCondominiumTests */ = {
+		00E356EF1AD99517003FC87E /* MyCondominiumTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* SocialCondominiumTests.m */,
+				00E356F21AD99517003FC87E /* MyCondominiumTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = SocialCondominiumTests;
+			path = MyCondominiumTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -495,12 +525,12 @@
 		0F65422D7FF42AB1B1B439CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D8E13BB553BB18534EEFFDDE /* Pods-SocialCondominium.debug.xcconfig */,
-				B2121FE3F0701D7C33F213D3 /* Pods-SocialCondominium.release.xcconfig */,
-				5C04F7E60E3774814827066E /* Pods-SocialCondominium-tvOS.debug.xcconfig */,
-				7A230A0DEF48DF21D545AA71 /* Pods-SocialCondominium-tvOS.release.xcconfig */,
-				CA346B7E0D05342E8E702E1C /* Pods-SocialCondominium-tvOSTests.debug.xcconfig */,
-				F2C89EE2F4607D097253AE26 /* Pods-SocialCondominium-tvOSTests.release.xcconfig */,
+				D8E13BB553BB18534EEFFDDE /* Pods-MyCondominium.debug.xcconfig */,
+				B2121FE3F0701D7C33F213D3 /* Pods-MyCondominium.release.xcconfig */,
+				5C04F7E60E3774814827066E /* Pods-MyCondominium-tvOS.debug.xcconfig */,
+				7A230A0DEF48DF21D545AA71 /* Pods-MyCondominium-tvOS.release.xcconfig */,
+				CA346B7E0D05342E8E702E1C /* Pods-MyCondominium-tvOSTests.debug.xcconfig */,
+				F2C89EE2F4607D097253AE26 /* Pods-MyCondominium-tvOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -525,9 +555,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* SocialCondominium */ = {
+		13B07FAE1A68108700A75B9A /* MyCondominium */ = {
 			isa = PBXGroup;
 			children = (
+				27760E6A229B6FDF00F5F127 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -536,7 +567,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = SocialCondominium;
+			name = MyCondominium;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -554,10 +585,26 @@
 				2DF0FFE52056DD460020B375 /* libthird-party.a */,
 				2DF0FFE72056DD460020B375 /* libdouble-conversion.a */,
 				2DF0FFE92056DD460020B375 /* libdouble-conversion.a */,
-				50FF6BD3229DF4A600EB903C /* libjsi.a */,
-				50FF6BD5229DF4A600EB903C /* libjsiexecutor.a */,
-				50FF6BD7229DF4A600EB903C /* libjsi-tvOS.a */,
-				50FF6BD9229DF4A600EB903C /* libjsiexecutor-tvOS.a */,
+				275947732261A42900BA95C5 /* libjsi.a */,
+				275947752261A42900BA95C5 /* libjsiexecutor.a */,
+				275947772261A42900BA95C5 /* libjsi-tvOS.a */,
+				275947792261A42900BA95C5 /* libjsiexecutor-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2759474C2261A42900BA95C5 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C97DD56AE46E45398AF70E2E /* libRNFirebase.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		2759477A2261A42A00BA95C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2759477E2261A42A00BA95C5 /* libRNFirebase.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -568,27 +615,11 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				599A1087F9C545123EFD61BE /* libPods-SocialCondominium.a */,
-				4A114661868ACFA83CCA60B3 /* libPods-SocialCondominium-tvOS.a */,
-				11B23455DE3C4D5673E7318E /* libPods-SocialCondominium-tvOSTests.a */,
+				599A1087F9C545123EFD61BE /* libPods-MyCondominium.a */,
+				4A114661868ACFA83CCA60B3 /* libPods-MyCondominium-tvOS.a */,
+				11B23455DE3C4D5673E7318E /* libPods-MyCondominium-tvOSTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		50FF6BAC229DF4A200EB903C /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				C97DD56AE46E45398AF70E2E /* libRNFirebase.a */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		50FF6BDA229DF4A600EB903C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				50FF6BDE229DF4A600EB903C /* libRNFirebase.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -641,14 +672,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* SocialCondominium */,
+				13B07FAE1A68108700A75B9A /* MyCondominium */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* SocialCondominiumTests */,
+				00E356EF1AD99517003FC87E /* MyCondominiumTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				50FF6BDF229DF4B300EB903C /* GoogleService-Info.plist */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				0F65422D7FF42AB1B1B439CC /* Pods */,
-				50FF6BAC229DF4A200EB903C /* Recovered References */,
+				2759474C2261A42900BA95C5 /* Recovered References */,
+				E44665614A4545F18ED94F82 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -658,10 +689,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* SocialCondominium.app */,
-				00E356EE1AD99517003FC87E /* SocialCondominiumTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* SocialCondominium-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* SocialCondominium-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* MyCondominium.app */,
+				00E356EE1AD99517003FC87E /* MyCondominiumTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* MyCondominium-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* MyCondominium-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -675,12 +706,34 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E44665614A4545F18ED94F82 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				91564767A93E4AB2B36AAB70 /* AntDesign.ttf */,
+				84A7E7991EFE43059B5F94D0 /* Entypo.ttf */,
+				A44F40EFD1EB487FAC356E41 /* EvilIcons.ttf */,
+				213A52077A324D8790AF461C /* Feather.ttf */,
+				547C7D8DE9C44FDFAD1DB44E /* FontAwesome.ttf */,
+				5B241954480F4FDDBE4A6C7B /* FontAwesome5_Brands.ttf */,
+				1DD873E4B96C49D8A19F8CE1 /* FontAwesome5_Regular.ttf */,
+				473D8B970C9D43BC93AD8073 /* FontAwesome5_Solid.ttf */,
+				7A48851D21D4447490CEBB7D /* Foundation.ttf */,
+				BC5ADF601DD44D32A8077E6F /* Ionicons.ttf */,
+				8A1E42474B6449F69592D48C /* MaterialCommunityIcons.ttf */,
+				C9629AB14B6643138F990992 /* MaterialIcons.ttf */,
+				DF57F02A05B34947B15DF186 /* Octicons.ttf */,
+				D9D81B0878F541FAA8382F00 /* SimpleLineIcons.ttf */,
+				4F35D03B27884EE0BF61A06C /* Zocial.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* SocialCondominiumTests */ = {
+		00E356ED1AD99517003FC87E /* MyCondominiumTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SocialCondominiumTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyCondominiumTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -691,14 +744,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = SocialCondominiumTests;
-			productName = SocialCondominiumTests;
-			productReference = 00E356EE1AD99517003FC87E /* SocialCondominiumTests.xctest */;
+			name = MyCondominiumTests;
+			productName = MyCondominiumTests;
+			productReference = 00E356EE1AD99517003FC87E /* MyCondominiumTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* SocialCondominium */ = {
+		13B07F861A680F5B00A75B9A /* MyCondominium */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SocialCondominium" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyCondominium" */;
 			buildPhases = (
 				68C8DDEF1FB1D75B5BB1B6BF /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -711,14 +764,14 @@
 			);
 			dependencies = (
 			);
-			name = SocialCondominium;
+			name = MyCondominium;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* SocialCondominium.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* MyCondominium.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* SocialCondominium-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* MyCondominium-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SocialCondominium-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MyCondominium-tvOS" */;
 			buildPhases = (
 				F2D1C0B3AA54F23E0D104D24 /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
@@ -730,14 +783,14 @@
 			);
 			dependencies = (
 			);
-			name = "SocialCondominium-tvOS";
-			productName = "SocialCondominium-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* SocialCondominium-tvOS.app */;
+			name = "MyCondominium-tvOS";
+			productName = "MyCondominium-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* MyCondominium-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* SocialCondominium-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* MyCondominium-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SocialCondominium-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MyCondominium-tvOSTests" */;
 			buildPhases = (
 				79393CDDE0E200C8D21E3C57 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -749,9 +802,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "SocialCondominium-tvOSTests";
-			productName = "SocialCondominium-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* SocialCondominium-tvOSTests.xctest */;
+			name = "MyCondominium-tvOSTests";
+			productName = "MyCondominium-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* MyCondominium-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -778,7 +831,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SocialCondominium" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyCondominium" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -840,16 +893,16 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 50FF6BDA229DF4A600EB903C /* Products */;
+					ProductGroup = 2759477A2261A42A00BA95C5 /* Products */;
 					ProjectRef = 8C34C759D8274A5CB8F8E751 /* RNFirebase.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* SocialCondominium */,
-				00E356ED1AD99517003FC87E /* SocialCondominiumTests */,
-				2D02E47A1E0B4A5D006451C7 /* SocialCondominium-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* SocialCondominium-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* MyCondominium */,
+				00E356ED1AD99517003FC87E /* MyCondominiumTests */,
+				2D02E47A1E0B4A5D006451C7 /* MyCondominium-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* MyCondominium-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -909,6 +962,41 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		275947732261A42900BA95C5 /* libjsi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsi.a;
+			remoteRef = 275947722261A42900BA95C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		275947752261A42900BA95C5 /* libjsiexecutor.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsiexecutor.a;
+			remoteRef = 275947742261A42900BA95C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		275947772261A42900BA95C5 /* libjsi-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsi-tvOS.a";
+			remoteRef = 275947762261A42900BA95C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		275947792261A42900BA95C5 /* libjsiexecutor-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsiexecutor-tvOS.a";
+			remoteRef = 275947782261A42900BA95C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2759477E2261A42A00BA95C5 /* libRNFirebase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFirebase.a;
+			remoteRef = 2759477D2261A42A00BA95C5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
@@ -1051,41 +1139,6 @@
 			remoteRef = 3DAD3EAA1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		50FF6BD3229DF4A600EB903C /* libjsi.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjsi.a;
-			remoteRef = 50FF6BD2229DF4A600EB903C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50FF6BD5229DF4A600EB903C /* libjsiexecutor.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjsiexecutor.a;
-			remoteRef = 50FF6BD4229DF4A600EB903C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50FF6BD7229DF4A600EB903C /* libjsi-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsi-tvOS.a";
-			remoteRef = 50FF6BD6229DF4A600EB903C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50FF6BD9229DF4A600EB903C /* libjsiexecutor-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsiexecutor-tvOS.a";
-			remoteRef = 50FF6BD8229DF4A600EB903C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		50FF6BDE229DF4A600EB903C /* libRNFirebase.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNFirebase.a;
-			remoteRef = 50FF6BDD229DF4A600EB903C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1137,7 +1190,22 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				50FF6BE0229DF4B300EB903C /* GoogleService-Info.plist in Resources */,
+				27760E91229B6FDF00F5F127 /* GoogleService-Info.plist in Resources */,
+				CEF32BEB1F8E467D8A30A149 /* AntDesign.ttf in Resources */,
+				DD1E829744E54C03AAB5A237 /* Entypo.ttf in Resources */,
+				59948F2FAD684EC0AD65183A /* EvilIcons.ttf in Resources */,
+				F316CECABB6349EC8557F818 /* Feather.ttf in Resources */,
+				9EB1972460284A878EE49EC7 /* FontAwesome.ttf in Resources */,
+				3E49DBF8C179441981E8E1DF /* FontAwesome5_Brands.ttf in Resources */,
+				6BEACC2001E4478EAF08853A /* FontAwesome5_Regular.ttf in Resources */,
+				1C26E8CCE9774281A25AA910 /* FontAwesome5_Solid.ttf in Resources */,
+				7EE45DF53230450BA56D8F75 /* Foundation.ttf in Resources */,
+				6B9B0E58FAB041F98E2A1930 /* Ionicons.ttf in Resources */,
+				96DD4D441B9A478FA61291E6 /* MaterialCommunityIcons.ttf in Resources */,
+				3089BA2E2F08422F9CD44B75 /* MaterialIcons.ttf in Resources */,
+				B25D0BAB00374B7791504360 /* Octicons.ttf in Resources */,
+				16113F8F25944F359B9FD1C9 /* SimpleLineIcons.ttf in Resources */,
+				9AD2A505621F40B6A2ABB46A /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,7 +1270,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SocialCondominium-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MyCondominium-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1224,7 +1292,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SocialCondominium-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MyCondominium-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1239,18 +1307,50 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SocialCondominium/Pods-SocialCondominium-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MyCondominium/Pods-MyCondominium-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/gRPCCertificates.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SocialCondominium/Pods-SocialCondominium-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyCondominium/Pods-MyCondominium-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2D1C0B3AA54F23E0D104D24 /* [CP] Check Pods Manifest.lock */ = {
@@ -1268,7 +1368,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SocialCondominium-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MyCondominium-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1282,7 +1382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* SocialCondominiumTests.m in Sources */,
+				00E356F31AD99517003FC87E /* MyCondominiumTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1308,7 +1408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* SocialCondominiumTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* MyCondominiumTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,12 +1417,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* SocialCondominium */;
+			target = 13B07F861A680F5B00A75B9A /* MyCondominium */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* SocialCondominium-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* MyCondominium-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1334,7 +1434,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = SocialCondominium;
+			path = MyCondominium;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1352,7 +1452,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = SocialCondominiumTests/Info.plist;
+				INFOPLIST_FILE = MyCondominiumTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1365,7 +1465,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialCondominium.app/SocialCondominium";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCondominium.app/MyCondominium";
 			};
 			name = Debug;
 		};
@@ -1378,7 +1478,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = SocialCondominiumTests/Info.plist;
+				INFOPLIST_FILE = MyCondominiumTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1391,13 +1491,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialCondominium.app/SocialCondominium";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCondominium.app/MyCondominium";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8E13BB553BB18534EEFFDDE /* Pods-SocialCondominium.debug.xcconfig */;
+			baseConfigurationReference = D8E13BB553BB18534EEFFDDE /* Pods-MyCondominium.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1406,22 +1506,22 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = SocialCondominium/Info.plist;
+				INFOPLIST_FILE = MyCondominium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = SocialCondominium;
+				PRODUCT_BUNDLE_IDENTIFIER = com.invertase.MyCondominium;
+				PRODUCT_NAME = MyCondominium;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2121FE3F0701D7C33F213D3 /* Pods-SocialCondominium.release.xcconfig */;
+			baseConfigurationReference = B2121FE3F0701D7C33F213D3 /* Pods-MyCondominium.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1429,22 +1529,22 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = SocialCondominium/Info.plist;
+				INFOPLIST_FILE = MyCondominium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = SocialCondominium;
+				PRODUCT_BUNDLE_IDENTIFIER = com.invertase.MyCondominium;
+				PRODUCT_NAME = MyCondominium;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C04F7E60E3774814827066E /* Pods-SocialCondominium-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 5C04F7E60E3774814827066E /* Pods-MyCondominium-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1459,7 +1559,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = "SocialCondominium-tvOS/Info.plist";
+				INFOPLIST_FILE = "MyCondominium-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1469,7 +1569,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SocialCondominium-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.invertase.MyCondominium-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1479,7 +1579,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A230A0DEF48DF21D545AA71 /* Pods-SocialCondominium-tvOS.release.xcconfig */;
+			baseConfigurationReference = 7A230A0DEF48DF21D545AA71 /* Pods-MyCondominium-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1494,7 +1594,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = "SocialCondominium-tvOS/Info.plist";
+				INFOPLIST_FILE = "MyCondominium-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1504,7 +1604,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SocialCondominium-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.invertase.MyCondominium-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1514,7 +1614,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA346B7E0D05342E8E702E1C /* Pods-SocialCondominium-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = CA346B7E0D05342E8E702E1C /* Pods-MyCondominium-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1528,7 +1628,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = "SocialCondominium-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "MyCondominium-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1538,17 +1638,17 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SocialCondominium-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.invertase.MyCondominium-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialCondominium-tvOS.app/SocialCondominium-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCondominium-tvOS.app/MyCondominium-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2C89EE2F4607D097253AE26 /* Pods-SocialCondominium-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = F2C89EE2F4607D097253AE26 /* Pods-MyCondominium-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1562,7 +1662,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = "SocialCondominium-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "MyCondominium-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1572,10 +1672,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SocialCondominium-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.invertase.MyCondominium-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialCondominium-tvOS.app/SocialCondominium-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCondominium-tvOS.app/MyCondominium-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1682,7 +1782,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SocialCondominiumTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MyCondominiumTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1691,7 +1791,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SocialCondominium" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyCondominium" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1700,7 +1800,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SocialCondominium-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MyCondominium-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1709,7 +1809,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SocialCondominium-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MyCondominium-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1718,7 +1818,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SocialCondominium" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MyCondominium" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
