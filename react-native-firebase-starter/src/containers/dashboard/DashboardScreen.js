@@ -105,8 +105,8 @@ class DashboardScreen extends Component {
                                 </Text>
                             </Card>
                             <ActionButton action={this.logout} title="Sair" color="red" />
-                        </Container>                    
-                </SideMenu>
+                        </Container>
+                    </SideMenu>
                 </SafeAreaView>
              </Fragment>
            )
