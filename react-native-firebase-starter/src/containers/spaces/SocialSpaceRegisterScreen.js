@@ -47,15 +47,17 @@ class SocialSpaceRegisterScreen extends Component {
           }
         })
     }
-    toggleNav() {
+    toggleNav = () => {
         this.setState({
-          isOpen: !this.state.isOpen
+            isOpen: !this.state.isOpen
         })
-      }
-    
-      updateMenuState(isOpen) {
+    }
+    _submitSpace = () => {
+
+    }
+    updateMenuState = isOpen => {
         this.setState({ isOpen });
-      }
+    }
     /**
      * @TODO ajustar e executar esta funcao quando criar o espaco para armazenar a imagem
      * pensar em um jeito de subir e trabalhar com esta imagem
@@ -127,6 +129,11 @@ class SocialSpaceRegisterScreen extends Component {
                                     title='Selecionar Foto do Espaço'
                                     action={this.handleChoosePhoto}
                                     color="#3b5998"
+                                />
+                                <ActionButton
+                                    title='Salvar Espaço Social'
+                                    action={this._submitSpace}
+                                    isPrimary
                                 />
                             </Container>
                         </KeyboardAvoidingView>

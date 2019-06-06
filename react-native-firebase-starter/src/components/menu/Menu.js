@@ -55,6 +55,12 @@ class Menu extends React.Component {
           Criar publicação
         </Text>
         <Text
+          onPress={() => this.props.navigation.push('SocialSpaceList')}
+          style={styles.item}
+        >
+          Espaços Sociais
+        </Text>
+        <Text
           onPress={() => this.logout}
           style={{...styles.item, color:'red'}}
         >
