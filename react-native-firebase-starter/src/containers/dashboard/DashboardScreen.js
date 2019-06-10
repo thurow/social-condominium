@@ -82,7 +82,7 @@ class DashboardScreen extends Component {
                         <Container>
                             <Card>
                                 <Text
-                                    //onPress={() => this.props.navigation.push('PostRegister')}
+                                    onPress={() => this.props.navigation.push('CondominiumRegister')}
                                     style={styles.item}
                                 >
                                     Condomínios
