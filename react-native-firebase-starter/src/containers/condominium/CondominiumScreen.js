@@ -8,6 +8,7 @@ import Loading from '../../components/utils/Loading';
 import { Container } from '../../styles/styles'
 import Header from '../../components/header/Header';
 import SideMenu from 'react-native-side-menu';
+import Menu from '../../components/menu/Menu';
 
 class CondominiumScreen extends Component {
 
@@ -54,6 +55,12 @@ class CondominiumScreen extends Component {
         }
     }
 
+    toggleNav() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
+
     register = async() => {
         this.setState({
             isLoading: true
@@ -91,6 +98,8 @@ class CondominiumScreen extends Component {
             )
         }
 
+        const { navigation } = this.props;
+        const menu = <Menu navigation={navigation} />
         return (
             <SideMenu
                 menu={menu}
@@ -158,8 +167,6 @@ class CondominiumScreen extends Component {
                             onChange={(state) => this.setState({ state })}
                             placeholder='Estado (UF)'
                         />
-                    </Container>
-                    <Container>
                         <ActionButton
                             title="Salvar"
                             isPrimary
