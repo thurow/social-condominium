@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { clearFields } from '../../actions/actions'
 import ActionButton from '../../components/button/ActionButton';
 import { SafeAreaView, StackActions, NavigationActions } from 'react-navigation';
+import firebase from 'react-native-firebase';
 
 const styles = StyleSheet.create({
     item: {
@@ -21,6 +22,7 @@ class DashboardScreen extends Component {
 
     state = {
         name: null,
+        condominium: null,
         isOpen: false
     }
 
@@ -34,13 +36,14 @@ class DashboardScreen extends Component {
         this.setState({ isOpen });
     }
 
-    getUserData = async () => {
+    fetchUserData = async () => {
         try {
-            const user = await AsyncStorage.getItem('@user')
-            return JSON.parse(user)
+            const userStr = await AsyncStorage.getItem('@user')
+            const user = JSON.parse(userStr)
+            console.log('user loaded', user)
+            this.setState({ name: user.firstName })
         } catch (e) {
             console.log(e)
-            return null
         }
     }
 
@@ -59,9 +62,8 @@ class DashboardScreen extends Component {
     }
 
 
-    async componentDidMount() {
-        const user = await this.getUserData()
-        this.setState({ name: user.firstName })
+    componentDidMount() {
+        this.fetchUserData()
     }
 
     render() {
@@ -105,7 +107,7 @@ class DashboardScreen extends Component {
                                     Criar publicação
                                 </Text>
                             </Card>
-                            <Card containerStyle={{marginBottom: 20}}>
+                            <Card containerStyle={{ marginBottom: 20 }}>
                                 <Text
                                     onPress={() => this.props.navigation.push('SocialSpaceList')}
                                     style={styles.item}
@@ -117,8 +119,8 @@ class DashboardScreen extends Component {
                         </Container>
                     </SideMenu>
                 </SafeAreaView>
-             </Fragment>
-           )
+            </Fragment>
+        )
     }
 }
 
