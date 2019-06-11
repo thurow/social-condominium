@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Card } from 'react-native-elements'
-import { Button, StyleSheet, Text } from 'react-native'
-import { Container } from '../../styles/styles'
+import { StyleSheet, Text } from 'react-native'
+import { Container, Title } from '../../styles/styles'
 import Menu from '../../components/menu/Menu';
 import Header from '../../components/header/Header';
 import SideMenu from 'react-native-side-menu';
@@ -80,6 +80,7 @@ class DashboardScreen extends Component {
                     >
                         <Header logged toggleNav={() => this.toggleNav()} />
                         <Container>
+                            <Title>{`Olá ${this.state.name}!`}</Title>
                             <Card>
                                 <Text
                                     onPress={() => this.props.navigation.push('CondominiumRegister')}
@@ -96,7 +97,7 @@ class DashboardScreen extends Component {
                                     Espaços sociais
                                 </Text>
                             </Card>
-                            <Card containerStyle={{marginBottom: 20}}>
+                            <Card>
                                 <Text
                                     onPress={() => this.props.navigation.push('PostRegister')}
                                     style={styles.item}
@@ -104,9 +105,17 @@ class DashboardScreen extends Component {
                                     Criar publicação
                                 </Text>
                             </Card>
+                            <Card containerStyle={{marginBottom: 20}}>
+                                <Text
+                                    onPress={() => this.props.navigation.push('SocialSpaceList')}
+                                    style={styles.item}
+                                >
+                                    Espaços Sociais
+                                </Text>
+                            </Card>
                             <ActionButton action={this.logout} title="Sair" color="red" />
-                        </Container>                    
-                </SideMenu>
+                        </Container>
+                    </SideMenu>
                 </SafeAreaView>
              </Fragment>
            )

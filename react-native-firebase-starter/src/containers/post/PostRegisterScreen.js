@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Image, KeyboardAvoidingView } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Header from '../../components/header/Header';
@@ -10,6 +10,7 @@ import ActionButton from '../../components/button/ActionButton';
 import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from 'react-redux';
+import { SafeAreaView } from 'react-navigation';
 
 class PostRegisterScreen extends Component {
 
@@ -56,50 +57,53 @@ class PostRegisterScreen extends Component {
         const menu = <Menu navigation={navigation} />
 
         return (
-            <SideMenu
-                menu={menu}
-                isOpen={this.state.isOpen}
-                disableGestures
-                menuPosition='right'
-                onChange={isOpen => this.updateMenuState(isOpen)}
-            >
-                <Header logged toggleNav={() => this.toggleNav()} />
-                <KeyboardAvoidingView behavior="padding" enabled>
-                    <Title>Criar publicação</Title>
-                    <Container>
-                        <InputTypeText
-                            autoCapitalize='words'
-                            keyboardType='default'
-                            name='post_description'
-                            multiline
-                            numberOfLines={6}
-                            placeholder='O que você deseja compartilhar?'
-                            stateValue={this.state.post_description}
-                            onChange={post_description => this.setState({ post_description })}
-                        />
-                        {post_photo && (
-                            <React.Fragment>
-                                <Image
-                                    source={{ uri: post_photo.uri }}
-                                    resizeMode="contain"
-                                    style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto' }}
+            <Fragment>
+                <SafeAreaView style={{ flex: 0, backgroundColor: '#eb4444' }} />
+                <SafeAreaView style={{ flex: 1, backgroundColor: '#3b5998' }}>
+                    <SideMenu
+                        menu={menu}
+                        isOpen={this.state.isOpen}
+                        menuPosition='right'
+                        onChange={isOpen => this.updateMenuState(isOpen)}
+                    >
+                        <Header logged toggleNav={() => this.toggleNav()} />
+                        <KeyboardAvoidingView behavior="padding" enabled>
+                            <Container>
+                                <Title>Criar publicação</Title>
+                                <InputTypeText
+                                    autoCapitalize='words'
+                                    keyboardType='default'
+                                    name='post_description'
+                                    multiline
+                                    numberOfLines={6}
+                                    placeholder='O que você deseja compartilhar?'
+                                    stateValue={this.state.post_description}
+                                    onChange={post_description => this.setState({ post_description })}
                                 />
-                            </React.Fragment>
-                        )}
-                        <ActionButton
-                            title='Imagem'
-                            action={this.handleChoosePhoto}
-                            color="#3b5998"
-                        />
-                        <ActionButton
-                            title='Publicar'
-                            action={this.savePost}
-                            isPrimary
-                        />
-                    </Container>
-                </KeyboardAvoidingView>
-
-            </SideMenu>
+                                {post_photo && (
+                                    <React.Fragment>
+                                        <Image
+                                            source={{ uri: post_photo.uri }}
+                                            resizeMode="contain"
+                                            style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto' }}
+                                        />
+                                        <ActionButton title="Salvar imagem" action={this.handleUpload} />
+                                    </React.Fragment>
+                                )}
+                                <ActionButton
+                                    title='Imagem'
+                                    action={this.handleChoosePhoto}
+                                    color="#3b5998"
+                                />
+                                <ActionButton
+                                    title='Salvar Publicação'
+                                    isPrimary
+                                />
+                            </Container>
+                        </KeyboardAvoidingView>
+                    </SideMenu>
+                </SafeAreaView>
+            </Fragment>
         );
     }
 }
