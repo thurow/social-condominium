@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { TouchableOpacity } from 'react-native'
 import { ButtonStyle } from './styles'
 
-const ActionButton = ({ title, color, action, isPrimary }) => {
+const ActionButton = ({ title, color, action, isPrimary, disabled = false }) => {
   return (
-    <TouchableOpacity onPress={action}>
-      <ButtonStyle isPrimary={isPrimary} color={color}>{title}</ButtonStyle>
+    <TouchableOpacity onPress={action} disabled={disabled}>
+      <ButtonStyle isPrimary={isPrimary} color={color} disabled={disabled}>{title}</ButtonStyle>
     </TouchableOpacity>
   )
 }

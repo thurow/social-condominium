@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Image, KeyboardAvoidingView } from 'react-native';
+import { Image, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import ActionButton from '../../components/button/ActionButton';
 import InputTypeText from '../../components/inputs/InpuTypeText';
@@ -11,31 +11,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 
-// import { Container } from './styles';
-
-const createFormData = (photo, body) => {
-    const data = new FormData();
-
-    data.append("photo", {
-        name: photo.fileName,
-        type: photo.type,
-        uri:
-        Platform.OS === "android" ? photo.uri : photo.uri.replace("file://", "")
-    });
-
-    Object.keys(body).forEach(key => {
-        data.append(key, body[key]);
-    });
-
-    return data;
-}
+import uuid from 'uuid/v4'
+import firebase from 'react-native-firebase';
 
 class SocialSpaceRegisterScreen extends Component {
     state = {
         space_name: '',
         space_photo: null,
+        space_photo_uploaded_url: null,
         space_description: '',
         isOpen: false,
+        uploading: false,
+        progress:0
     }
     handleChoosePhoto = () => {
         const options = {
@@ -58,28 +45,41 @@ class SocialSpaceRegisterScreen extends Component {
     updateMenuState = isOpen => {
         this.setState({ isOpen });
     }
-    /**
-     * @TODO ajustar e executar esta funcao quando criar o espaco para armazenar a imagem
-     * pensar em um jeito de subir e trabalhar com esta imagem
-     */
-    // handleUploadPhoto = () => {
-    //     fetch("http://localhost:3000/api/upload", {
-    //     method: "POST",
-    //     body: createFormData(this.state.space_photo, { userId: "123" })
-    //     })
-    //     .then(response => response.json())
-    //     .then(response => {
-    //         console.log("upload succes", response);
-    //         alert("Upload success!");
-    //         this.setState({ space_photo: null });
-    //     })
-    //     .catch(error => {
-    //         console.log("upload error", error);
-    //         alert("Upload failed!");
-    //     });
-    // }
+    handleUploadPhoto = () => {
+        const ext = this.state.space_photo.uri.split('.').pop(); // Extract image extension
+        const filename = `${uuid()}.${ext}`; // Generate unique name
+        this.setState({ uploading: true });
+        firebase
+            .storage()
+            .ref(`social-spaces/${filename}`)
+            .putFile(this.state.space_photo.uri)
+            .on(
+                firebase.storage.TaskEvent.STATE_CHANGED,
+                snapshot => {
+                    let state = {};
+                    state = {
+                        ...state,
+                        progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
+                    };
+                    if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+                        state = {
+                            ...state,
+                            space_photo_uploaded_url: snapshot.downloadURL,
+                            uploading: false,
+                            progress: 0
+                        };
+                        alert('Foto foi salva!')
+                    }
+                    this.setState(state);
+                },
+                error => {
+                    unsubscribe();
+                    alert('Ocorreu uma falha, tente novamente.');
+                }
+        );
+    }
     render() {
-        const { space_photo } = this.state
+        const { space_photo, uploading, progress } = this.state
         const { navigation } = this.props;
 
         const menu = <Menu navigation={navigation} />
@@ -122,7 +122,16 @@ class SocialSpaceRegisterScreen extends Component {
                                             resizeMode="contain"
                                             style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto'}}
                                         />
-                                        <ActionButton title="Salvar foto" action={this.handleUpload} />
+                                        {uploading && (
+                                            <View
+                                                style={[styles.progressBar, { width: `${progress}%` }]}
+                                            />
+                                        )}
+                                        {uploading ? (
+                                            <ActionButton title="Salvando..." disabled />
+                                        ) : (
+                                            <ActionButton title="Salvar foto" action={this.handleUploadPhoto} />
+                                        )}
                                     </Fragment>
                                 )}
                                 <ActionButton
@@ -143,6 +152,14 @@ class SocialSpaceRegisterScreen extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    progressBar: {
+        backgroundColor: 'rgb(3, 154, 229)',
+        height: 3,
+        shadowColor: '#000',
+    }
+})
 
 const mapStateToProps = state => ({});
 

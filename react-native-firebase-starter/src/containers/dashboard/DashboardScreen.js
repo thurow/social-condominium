@@ -94,7 +94,7 @@ class DashboardScreen extends Component {
                                     onPress={() => this.props.navigation.push('SocialSpaceRegister')}
                                     style={styles.item}
                                 >
-                                    Espaços sociais
+                                    Cadastro de Espaços sociais
                                 </Text>
                             </Card>
                             <Card>
