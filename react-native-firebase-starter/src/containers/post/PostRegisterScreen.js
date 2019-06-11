@@ -7,6 +7,8 @@ import InputTypeText from '../../components/inputs/InpuTypeText';
 import SideMenu from 'react-native-side-menu';
 import Menu from '../../components/menu/Menu';
 import ActionButton from '../../components/button/ActionButton';
+import firebase from 'react-native-firebase';
+import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 
@@ -39,8 +41,17 @@ class PostRegisterScreen extends Component {
         this.setState({ isOpen });
     }
 
+    savePost = async() => {
+        const {id} = JSON.parse(await AsyncStorage.getItem('@user'));
+        await firebase.firestore().collection('post').add({
+            datetime: new Date(),
+            description: this.state.post_description,
+            userid: id
+        });
+    }
+
     render() {
-        const { post_photo } = this.state
+        const { post_photo } = this.state;
         const { navigation } = this.props;
 
         const menu = <Menu navigation={navigation} />

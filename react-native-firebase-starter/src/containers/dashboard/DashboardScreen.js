@@ -85,7 +85,7 @@ class DashboardScreen extends Component {
                             <Title>{`Olá ${this.state.name}!`}</Title>
                             <Card>
                                 <Text
-                                    //onPress={() => this.props.navigation.push('PostRegister')}
+                                    onPress={() => this.props.navigation.push('CondominiumRegister')}
                                     style={styles.item}
                                 >
                                     Condomínios
@@ -96,7 +96,7 @@ class DashboardScreen extends Component {
                                     onPress={() => this.props.navigation.push('SocialSpaceRegister')}
                                     style={styles.item}
                                 >
-                                    Espaços sociais
+                                    Cadastro de Espaços sociais
                                 </Text>
                             </Card>
                             <Card>
