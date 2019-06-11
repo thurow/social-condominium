@@ -53,6 +53,15 @@ class LoginScreen extends Component {
 				firstName: user.firstName,
 				lastName: user.lastName
 			}))
+			const fbUser = await firebase.firestore().collection('users').doc(user.uid).get()
+			const fbUserData = fbUser.data()
+			if (fbUserData.condominium != null) {
+				const condominium = await fbUserData.condominium.get()
+				if (condominium.exists) {
+					await AsyncStorage.setItem('@condominium', condominium.id)
+				}
+			}
+
 		} catch (e) {
 			// saving error
 			console.log(e)
@@ -68,7 +77,6 @@ class LoginScreen extends Component {
 			uid: user.uid,
 			email: user.email,
 			firstName: user.displayName,
-			condominium: user.condominium
 		}
 		await userService.createUserIfNotExists(userProfile.uid, userProfile)
 		return userProfile

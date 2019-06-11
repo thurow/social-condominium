@@ -42,8 +42,19 @@ class DashboardScreen extends Component {
             const user = JSON.parse(userStr)
             console.log('user loaded', user)
             this.setState({ name: user.firstName })
+            this.fetchCondominiumData()
         } catch (e) {
             console.log(e)
+        }
+    }
+
+    fetchCondominiumData = async () => {
+        const condominiumID = await AsyncStorage.getItem('@condominium')
+        console.log('condominiumID', condominiumID)
+        if (condominiumID != null) {
+            const condominium = await firebase.firestore().collection('condominium').doc(condominiumID).get()
+            console.log('condominium firebase', condominium)
+            this.setState({ condominium })
         }
     }
 
