@@ -190,6 +190,14 @@ PODS:
   - Protobuf (3.7.0)
   - React (0.59.3):
     - React/Core (= 0.59.3)
+  - react-native-camera (2.10.2):
+    - React
+    - react-native-camera/RCT (= 2.10.2)
+    - react-native-camera/RN (= 2.10.2)
+  - react-native-camera/RCT (2.10.2):
+    - React
+  - react-native-camera/RN (2.10.2):
+    - React
   - react-native-image-picker (0.28.1):
     - React
   - React/Core (0.59.3):
@@ -220,6 +228,7 @@ DEPENDENCIES:
   - Firebase/Storage (~> 5.20.1)
   - GoogleSignIn (~> 4.4.0)
   - React (from `../node_modules/react-native`)
+  - react-native-camera (from `../node_modules/react-native-camera`)
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -262,6 +271,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   React:
     :path: "../node_modules/react-native"
+  react-native-camera:
+    :path: "../node_modules/react-native-camera"
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
   RNCAsyncStorage:
@@ -306,6 +317,7 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   React: b52fdb80565505b7e4592b313a38868f5df51641
+  react-native-camera: 89f0367c52e3ed70dd042c6362891cf7869f8e1c
   react-native-image-picker: fd93361c666f397bdf72f9c6c23f13d2685b9173
   RNCAsyncStorage: 0d2b0cf659d2def90d8ed7de76f502d335268156
   RNGestureHandler: aea90f0ad8e35fec23438db6fc3ad79be58bb734
@@ -313,6 +325,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 6607bd3a30291d0edb56f9bbe7ae411ee2b928b0
   yoga: 1a492113f66a35e9e583bb0434f4b8cc668dd839
 
-PODFILE CHECKSUM: ac9e2c60f55c80bbfc1b12a4e725bde84ecc4211
+PODFILE CHECKSUM: 1e29d4673550d74b610670f8aeb70ff7bcf6d407
 
 COCOAPODS: 1.6.1

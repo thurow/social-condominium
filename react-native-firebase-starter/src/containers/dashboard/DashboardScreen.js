@@ -118,6 +118,14 @@ class DashboardScreen extends Component {
                                     Criar publicação
                                 </Text>
                             </Card>
+                            <Card>
+                                <Text
+                                    onPress={() => this.props.navigation.push('QRCodeCamera')}
+                                    style={styles.item}
+                                >
+                                    Ler QRCode
+                                </Text>
+                            </Card>
                             <Card containerStyle={{ marginBottom: 20 }}>
                                 <Text
                                     onPress={() => this.props.navigation.push('SocialSpaceList')}
