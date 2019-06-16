@@ -39,8 +39,18 @@ class SocialSpaceRegisterScreen extends Component {
             isOpen: !this.state.isOpen
         })
     }
-    _submitSpace = () => {
-
+    _submitSpace = async () => {
+        try {
+            const { space_name, space_description, space_photo_uploaded_url } = this.state
+            await firebase.firestore().collection('social-space').add({
+                space_name,
+                space_description,
+                space_photo_uploaded_url,
+                condominium: 'teste'
+            });
+        } catch (err) {
+            console.log(err)
+        }
     }
     updateMenuState = isOpen => {
         this.setState({ isOpen });

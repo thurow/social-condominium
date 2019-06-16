@@ -8,6 +8,7 @@ import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
 
 import { data } from '../../mock/social_list';
+import { FlatList } from 'react-native-gesture-handler';
 
 export class SocialSpaceListScreen extends Component {
     state = {
@@ -43,7 +44,36 @@ export class SocialSpaceListScreen extends Component {
                         <Header logged toggleNav={() => this.toggleNav()} />
                         <Container>
                             <Title>Alugar Espaço</Title>
-                            {socialSpaces.map(space => (
+                            <FlatList
+                                data={socialSpaces}
+                                keyExtractor={space => space.id.toString()}
+                                renderItem={({item}) =>
+                                    <View
+                                        style={{
+                                            flex: 0,
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            marginBottom: 15,
+                                            padding:15,
+                                            borderBottomWidth: 2,
+                                            borderColor: "#eee"
+                                        }}
+                                    >
+                                        <Image
+                                            style={{width: 100, height: 75, marginRight:10}}
+                                            source={{uri: item.image_url}} />
+                                        <Text
+                                            style={{
+                                                fontSize: 24,
+                                                fontWeight:'400'
+                                            }}
+                                        >
+                                            {item.name}
+                                        </Text>
+                                    </View>
+                                }
+                            />
+                            {/* {socialSpaces.map(space => (
                                 <View
                                     key={space.id}
                                     style={{
@@ -68,7 +98,7 @@ export class SocialSpaceListScreen extends Component {
                                         {space.name}
                                     </Text>
                                 </View>
-                            ))}
+                            ))} */}
                         </Container>
                     </SideMenu>
                 </SafeAreaView>

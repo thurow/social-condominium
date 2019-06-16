@@ -3,7 +3,7 @@ import { View, StyleSheet, Alert } from 'react-native'
 import { RNCamera } from "react-native-camera";
 
 class QRCodeCameraScreen extends Component {
-
+//jpS2x09r1fmq8erGCZUy
     onBarCodeRead = (e) => {
         Alert.alert("Barcode value is"+e.data ,"Barcode type is"+e.type);
     }
