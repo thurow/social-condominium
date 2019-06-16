@@ -11,6 +11,7 @@ import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
 import { StackActions, NavigationActions, SafeAreaView } from 'react-navigation';
 import { GoogleSignin } from 'react-native-google-signin';
+import userService from '../../services/userService'
 
 
 GoogleSignin.configure({
@@ -52,6 +53,15 @@ class LoginScreen extends Component {
 				firstName: user.firstName,
 				lastName: user.lastName
 			}))
+			const fbUser = await firebase.firestore().collection('users').doc(user.uid).get()
+			const fbUserData = fbUser.data()
+			if (fbUserData.condominium != null) {
+				const condominium = await fbUserData.condominium.get()
+				if (condominium.exists) {
+					await AsyncStorage.setItem('@condominium', condominium.id)
+				}
+			}
+
 		} catch (e) {
 			// saving error
 			console.log(e)
@@ -62,14 +72,13 @@ class LoginScreen extends Component {
 		await GoogleSignin.hasPlayServices();
 		const { idToken, serverAuthCode } = await GoogleSignin.signIn();
 		const authCredential = firebase.auth.GoogleAuthProvider.credential(idToken, serverAuthCode)
-		const {user} = await firebase.auth().signInWithCredential(authCredential)
+		const { user } = await firebase.auth().signInWithCredential(authCredential)
 		const userProfile = {
 			uid: user.uid,
 			email: user.email,
-			firstName: user.displayName
+			firstName: user.displayName,
 		}
-
-		//todo save on db user collection
+		await userService.createUserIfNotExists(userProfile.uid, userProfile)
 		return userProfile
 	}
 
@@ -84,7 +93,7 @@ class LoginScreen extends Component {
 				uid: authentication.user.uid,
 				email: email,
 				firstName: user.get('firstName'),
-				lastName: user.get('lastName')
+				lastName: user.get('lastName'),
 			}
 			return userProfile
 		}

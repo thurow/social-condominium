@@ -8,6 +8,7 @@ import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
 import Header from '../../components/header/Header';
 import { SafeAreaView } from 'react-navigation';
+import userService from '../../services/userService'
 
 class RegisterScreen extends Component {
 
@@ -27,7 +28,7 @@ class RegisterScreen extends Component {
 
     try {
       const authentication = await firebase.auth().createUserWithEmailAndPassword(email, password)
-      await firebase.firestore().collection('users').doc(authentication.user.uid).set({
+      await userService.createNewUser(authentication.user.uid, {
         firstName: this.state.first_name,
         lastName: this.state.last_name
       })
@@ -47,7 +48,7 @@ class RegisterScreen extends Component {
       await AsyncStorage.setItem('@user', JSON.stringify({
         id: authentication.user.uid,
         email: authentication.user.email,
-        fistName: this.state.first_name,
+        firstName: this.state.first_name,
         lastName: this.state.last_name
       }))
     } catch (e) {

@@ -5,6 +5,7 @@
   "scripts": {
     "android-bundle": "mkdir -p android/app/src/main/assets && react-native bundle --platform android --dev true --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
     "android": "react-native run-android",
+    "android-clean": "cd android && .\\gradlew clean",
     "ios": "react-native run-ios --simulator=\"iPhone X\"",
     "apk": "cd android && ./gradlew assembleRelease",
     "rename": "node ./bin/rename.js",
@@ -25,7 +26,8 @@
     "react-navigation": "^3.11.0",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

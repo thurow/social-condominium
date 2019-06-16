@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import SideMenu from 'react-native-side-menu';
 import { connect } from 'react-redux'
 import Menu from '../../components/menu/Menu';
@@ -8,7 +8,6 @@ import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
 
 import { data } from '../../mock/social_list';
-import { Card, Image } from 'react-native-elements';
 
 export class SocialSpaceListScreen extends Component {
     state = {
