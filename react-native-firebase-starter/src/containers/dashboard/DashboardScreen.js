@@ -83,10 +83,18 @@ class DashboardScreen extends Component {
                             <Title>{`Olá ${this.state.name}!`}</Title>
                             <Card>
                                 <Text
-                                    onPress={() => this.props.navigation.push('CondominiumRegister')}
+                                    onPress={() => this.props.navigation.push('CondominiumList')}
                                     style={styles.item}
                                 >
                                     Condomínios
+                                </Text>
+                            </Card>
+                            <Card>
+                                <Text
+                                    onPress={() => this.props.navigation.push('CondominiumRegister')}
+                                    style={styles.item}
+                                >
+                                    Cadastrar condomínio
                                 </Text>
                             </Card>
                             <Card>

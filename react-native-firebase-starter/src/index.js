@@ -6,6 +6,7 @@ import SocialSpaceRegisterScreen from './containers/spaces/SocialSpaceRegisterSc
 import PostRegisterScreen from './containers/post/PostRegisterScreen';
 import CondominiumScreen from './containers/condominium/CondominiumScreen';
 import SocialSpaceListScreen from './containers/spaces/SocialSpaceListScreen';
+import { CondominiumListScreen } from './containers/condominium/CondominiumListScreen';
 
 const MainNavigator = createStackNavigator({
   Home: LoginScreen,
@@ -14,6 +15,7 @@ const MainNavigator = createStackNavigator({
   SocialSpaceRegister: SocialSpaceRegisterScreen,
   PostRegister: PostRegisterScreen,
   CondominiumRegister: CondominiumScreen,
+  CondominiumList: CondominiumListScreen,
   SocialSpaceList: SocialSpaceListScreen
 }, {
     headerMode: 'none'
