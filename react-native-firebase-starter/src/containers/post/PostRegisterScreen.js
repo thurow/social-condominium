@@ -98,6 +98,7 @@ class PostRegisterScreen extends Component {
                                 <ActionButton
                                     title='Salvar Publicação'
                                     isPrimary
+                                    action={this.savePost}
                                 />
                             </Container>
                         </KeyboardAvoidingView>
