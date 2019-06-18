@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Image, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
+import { Image, KeyboardAvoidingView } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import ActionButton from '../../components/button/ActionButton';
 import InputTypeText from '../../components/inputs/InpuTypeText';
@@ -7,12 +7,13 @@ import { Title, Container } from '../../styles/styles';
 import Menu from '../../components/menu/Menu';
 import Header from '../../components/header/Header';
 import SideMenu from 'react-native-side-menu';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
 
 import uuid from 'uuid/v4'
 import firebase from 'react-native-firebase';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class SocialSpaceRegisterScreen extends Component {
     state = {
@@ -41,13 +42,16 @@ class SocialSpaceRegisterScreen extends Component {
     }
     _submitSpace = async () => {
         try {
+            const { condominium } = JSON.parse(await AsyncStorage.getItem('@user'));
             const { space_name, space_description, space_photo_uploaded_url } = this.state
             await firebase.firestore().collection('social-space').add({
                 space_name,
                 space_description,
                 space_photo_uploaded_url,
-                condominium: 'teste'
+                condominium
             });
+
+            this.props.navigation.push('SocialSpaceList')
         } catch (err) {
             console.log(err)
         }
@@ -56,9 +60,9 @@ class SocialSpaceRegisterScreen extends Component {
         this.setState({ isOpen });
     }
     handleUploadPhoto = () => {
-        const ext = this.state.space_photo.uri.split('.').pop(); // Extract image extension
-        const filename = `${uuid()}.${ext}`; // Generate unique name
+        const filename = `${uuid()}.jpg`; // Generate unique name
         this.setState({ uploading: true });
+        console.log(filename)
         firebase
             .storage()
             .ref(`social-spaces/${filename}`)
@@ -66,21 +70,13 @@ class SocialSpaceRegisterScreen extends Component {
             .on(
                 firebase.storage.TaskEvent.STATE_CHANGED,
                 snapshot => {
-                    let state = {};
-                    state = {
-                        ...state,
-                        progress: (snapshot.bytesTransferred / snapshot.totalBytes) * 100 // Calculate progress percentage
-                    };
                     if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
-                        state = {
-                            ...state,
+                        this.setState({
                             space_photo_uploaded_url: snapshot.downloadURL,
-                            uploading: false,
-                            progress: 0
-                        };
+                            uploading: false
+                        })
                         alert('Foto foi salva!')
                     }
-                    this.setState(state);
                 },
                 error => {
                     unsubscribe();
@@ -89,7 +85,7 @@ class SocialSpaceRegisterScreen extends Component {
         );
     }
     render() {
-        const { space_photo, uploading, progress } = this.state
+        const { space_photo, uploading, space_photo_uploaded_url } = this.state
         const { navigation } = this.props;
 
         const menu = <Menu navigation={navigation} />
@@ -132,11 +128,6 @@ class SocialSpaceRegisterScreen extends Component {
                                             resizeMode="contain"
                                             style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto'}}
                                         />
-                                        {uploading && (
-                                            <View
-                                                style={[styles.progressBar, { width: `${progress}%` }]}
-                                            />
-                                        )}
                                         {uploading ? (
                                             <ActionButton title="Salvando..." disabled />
                                         ) : (
@@ -152,6 +143,7 @@ class SocialSpaceRegisterScreen extends Component {
                                 <ActionButton
                                     title='Salvar Espaço Social'
                                     action={this._submitSpace}
+                                    disabled={space_photo_uploaded_url !== null ? false : true}
                                     isPrimary
                                 />
                             </Container>
@@ -163,20 +155,10 @@ class SocialSpaceRegisterScreen extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    progressBar: {
-        backgroundColor: 'rgb(3, 154, 229)',
-        height: 3,
-        shadowColor: '#000',
-    }
-})
-
 const mapStateToProps = state => ({});
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators(Actions, dispatch);
-
-export default connect(
-  mapStateToProps,
-  // mapDispatchToProps
-)(SocialSpaceRegisterScreen);
+// export default connect(
+//   mapStateToProps,
+//   // mapDispatchToProps
+// )(SocialSpaceRegisterScreen);
+export default SocialSpaceRegisterScreen

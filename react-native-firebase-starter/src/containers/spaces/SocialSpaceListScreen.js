@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, ActivityIndicator } from 'react-native'
 import SideMenu from 'react-native-side-menu';
 import { connect } from 'react-redux'
 import Menu from '../../components/menu/Menu';
@@ -7,13 +7,28 @@ import { SafeAreaView } from 'react-navigation';
 import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
 
-import { data } from '../../mock/social_list';
 import { FlatList } from 'react-native-gesture-handler';
+import firebase from 'react-native-firebase';
 
 export class SocialSpaceListScreen extends Component {
     state = {
         isOpen: false,
-        socialSpaces: data.spaces
+        isLoading: true,
+        socialSpaces: []
+    }
+
+    async componentDidMount() {
+        const snapshot = await firebase.firestore().collection('social-space').get()
+        this.setState({
+            socialSpaces: snapshot.docs.map( doc => (
+                {
+                    id: doc.id,
+                    name: doc.data().space_name,
+                    image_url: doc.data().space_photo_uploaded_url
+                }
+            )),
+            isLoading: false
+        })
     }
 
     toggleNav() {
@@ -28,7 +43,7 @@ export class SocialSpaceListScreen extends Component {
 
     render() {
         const { navigation } = this.props;
-        const { socialSpaces } = this.state
+        const { socialSpaces, isLoading } = this.state
 
         const menu = <Menu navigation={navigation} />
         return (
@@ -44,8 +59,10 @@ export class SocialSpaceListScreen extends Component {
                         <Header logged toggleNav={() => this.toggleNav()} />
                         <Container>
                             <Title>Alugar Espaço</Title>
+                            {isLoading && <ActivityIndicator size="large" color="#d33028" />}
                             <FlatList
                                 data={socialSpaces}
+                                style={isLoading === true ? { display: 'none' } : {}}
                                 keyExtractor={space => space.id.toString()}
                                 renderItem={({item}) =>
                                     <View
@@ -73,32 +90,6 @@ export class SocialSpaceListScreen extends Component {
                                     </View>
                                 }
                             />
-                            {/* {socialSpaces.map(space => (
-                                <View
-                                    key={space.id}
-                                    style={{
-                                        flex: 0,
-                                        flexDirection: 'row',
-                                        alignItems: 'center',
-                                        marginBottom: 15,
-                                        padding:15,
-                                        borderBottomWidth: 2,
-                                        borderColor: "#eee"
-                                    }}
-                                >
-                                    <Image
-                                        style={{width: 100, height: 75, marginRight:10}}
-                                        source={{uri: space.image_url}} />
-                                    <Text
-                                        style={{
-                                            fontSize: 24,
-                                            fontWeight:'400'
-                                        }}
-                                    >
-                                        {space.name}
-                                    </Text>
-                                </View>
-                            ))} */}
                         </Container>
                     </SideMenu>
                 </SafeAreaView>
