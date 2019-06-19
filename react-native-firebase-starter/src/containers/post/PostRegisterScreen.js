@@ -67,7 +67,7 @@ class PostRegisterScreen extends Component {
                         onChange={isOpen => this.updateMenuState(isOpen)}
                     >
                         <Header logged toggleNav={() => this.toggleNav()} />
-                        <KeyboardAvoidingView behavior="padding" enabled>
+                        <KeyboardAvoidingView behavior="height" enabled>
                             <Container>
                                 <Title>Criar publicação</Title>
                                 <InputTypeText

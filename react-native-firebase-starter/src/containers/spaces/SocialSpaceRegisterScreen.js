@@ -101,7 +101,7 @@ class SocialSpaceRegisterScreen extends Component {
                         onChange={isOpen => this.updateMenuState(isOpen)}
                     >
                         <Header logged toggleNav={() => this.toggleNav()} />
-                        <KeyboardAvoidingView behavior="padding" enabled>
+                        <KeyboardAvoidingView behavior="height" enabled style={{backgroundColor: '#fff'}}>
                             <Container>
                                 <Title>Novo Espaço Social</Title>
                                 <InputTypeText

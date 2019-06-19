@@ -1,15 +1,17 @@
 import React, { Component, Fragment } from 'react'
-import { View, Text, Image, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import SideMenu from 'react-native-side-menu';
 import { connect } from 'react-redux'
 import Menu from '../../components/menu/Menu';
 import { SafeAreaView } from 'react-navigation';
 import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
-
+import { Image } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
 import firebase from 'react-native-firebase';
-
+/**
+ * @TODO Filtrar lista pelo condominio do user
+ */
 export class SocialSpaceListScreen extends Component {
     state = {
         isOpen: false,
@@ -62,7 +64,7 @@ export class SocialSpaceListScreen extends Component {
                             {isLoading && <ActivityIndicator size="large" color="#d33028" />}
                             <FlatList
                                 data={socialSpaces}
-                                style={isLoading === true ? { display: 'none' } : {}}
+                                style={isLoading === true ? { display: 'none' } : { borderEndColor: '#eee', borderEndWidth:1 }}
                                 keyExtractor={space => space.id.toString()}
                                 renderItem={({item}) =>
                                     <View
@@ -81,9 +83,13 @@ export class SocialSpaceListScreen extends Component {
                                             source={{uri: item.image_url}} />
                                         <Text
                                             style={{
-                                                fontSize: 24,
+                                                paddingVertical: 20,
+                                                fontSize: 20,
                                                 fontWeight:'400'
                                             }}
+                                            onPress={() => navigation.push('SocialSpace', {
+                                                spaceId: item.id
+                                            })}
                                         >
                                             {item.name}
                                         </Text>

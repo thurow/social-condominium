@@ -8,6 +8,7 @@ import CondominiumScreen from './containers/condominium/CondominiumScreen';
 import SocialSpaceListScreen from './containers/spaces/SocialSpaceListScreen';
 import QRCodeCameraScreen from './containers/Camera/QRCodeCameraScreen';
 import CondominiumListScreen from './containers/condominium/CondominiumListScreen';
+import SocialSpaceScreen from './containers/spaces/SocialSpaceScreen';
 
 const MainNavigator = createStackNavigator({
   Home: LoginScreen,
@@ -18,7 +19,8 @@ const MainNavigator = createStackNavigator({
   CondominiumRegister: CondominiumScreen,
   SocialSpaceList: SocialSpaceListScreen,
   QRCodeCamera: QRCodeCameraScreen,
-  CondominiumList: CondominiumListScreen
+  CondominiumList: CondominiumListScreen,
+  SocialSpace: SocialSpaceScreen
 }, {
     headerMode: 'none'
   });

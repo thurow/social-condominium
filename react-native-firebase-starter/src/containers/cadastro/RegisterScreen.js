@@ -112,19 +112,6 @@ class RegisterScreen extends Component {
               onChange={last_name => this.setState({ last_name })}
               placeholder='Sobrenome'
             />
-            {/* <Picker
-              selectedValue={this.state.condominium}
-              style={{height: 50, width: '100%'}}
-              onValueChange={condominium => {
-                this.setState({ condominium })
-              }}>
-                {this.state.condominiuns.map(condominium => (
-                  <Picker.Item
-                    key={condominium.id}
-                    label={condominium.value.name}
-                    value={condominium.id} />
-                ))}
-            </Picker> */}
             <RNPickerSelect
               placeholder={placeholder}
               items={this.state.condominiuns}
