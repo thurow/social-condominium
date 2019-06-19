@@ -80,6 +80,7 @@ class SocialSpaceScreen extends Component {
                                         style={{width: 150}}
                                         date={this.state.date}
                                         mode="date"
+                                        androidMode="calendar"
                                         placeholder="select date"
                                         format="DD/MM/YYYY"
                                         minDate={new Date()}
