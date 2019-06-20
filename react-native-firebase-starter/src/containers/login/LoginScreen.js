@@ -15,9 +15,9 @@ import userService from '../../services/userService'
 
 
 GoogleSignin.configure({
-	webClientId: '806706434094-s0mhaernndvqjb2c9gveasr3r622dgie.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
-	offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
-	forceConsentPrompt: true // [Android] if you want to show the authorization prompt at each login.
+	webClientId: '806706434094-s0mhaernndvqjb2c9gveasr3r622dgie.apps.googleusercontent.com',
+	offlineAccess: true,
+	forceConsentPrompt: true
 });
 
 class LoginScreen extends Component {
@@ -51,7 +51,8 @@ class LoginScreen extends Component {
 				id: user.uid,
 				email: user.email,
 				firstName: user.firstName,
-				lastName: user.lastName
+				lastName: user.lastName,
+				condominium: user.condominium
 			}))
 			const fbUser = await firebase.firestore().collection('users').doc(user.uid).get()
 			const fbUserData = fbUser.data()
@@ -94,6 +95,7 @@ class LoginScreen extends Component {
 				email: email,
 				firstName: user.get('firstName'),
 				lastName: user.get('lastName'),
+				condominium: user.get('condominium')
 			}
 			return userProfile
 		}
@@ -118,7 +120,7 @@ class LoginScreen extends Component {
 			this.props.navigation.dispatch(resetAction);
 		} catch (error) {
 			console.log(error);
-			Alert.alert('Não foi possível autenticar-se, verifique suas credenciais');
+			alert('Não foi possível autenticar-se, verifique suas credenciais');
 		}
 	};
 

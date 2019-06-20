@@ -10,11 +10,11 @@ import { connect } from "react-redux";
 import { clearFields } from '../../actions/actions'
 import ActionButton from '../../components/button/ActionButton';
 import { SafeAreaView, StackActions, NavigationActions } from 'react-navigation';
-import firebase from 'react-native-firebase';
 
 const styles = StyleSheet.create({
     item: {
-        fontSize: 20
+        fontSize: 20,
+        paddingVertical: 10
     }
 });
 
@@ -41,20 +41,9 @@ class DashboardScreen extends Component {
             const userStr = await AsyncStorage.getItem('@user')
             const user = JSON.parse(userStr)
             console.log('user loaded', user)
-            this.setState({ name: user.firstName })
-            this.fetchCondominiumData()
+            this.setState({ name: user.firstName, condominium: user.condominium })
         } catch (e) {
             console.log(e)
-        }
-    }
-
-    fetchCondominiumData = async () => {
-        const condominiumID = await AsyncStorage.getItem('@condominium')
-        console.log('condominiumID', condominiumID)
-        if (condominiumID != null) {
-            const condominium = await firebase.firestore().collection('condominium').doc(condominiumID).get()
-            console.log('condominium firebase', condominium)
-            this.setState({ condominium })
         }
     }
 
@@ -73,8 +62,8 @@ class DashboardScreen extends Component {
     }
 
 
-    componentDidMount() {
-        this.fetchUserData()
+    async componentDidMount() {
+        await this.fetchUserData()
     }
 
     render() {

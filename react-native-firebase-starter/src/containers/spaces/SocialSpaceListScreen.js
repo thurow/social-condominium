@@ -8,6 +8,7 @@ import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
 import { Image } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
 import firebase from 'react-native-firebase';
 /**
  * @TODO Filtrar lista pelo condominio do user
@@ -20,17 +21,22 @@ export class SocialSpaceListScreen extends Component {
     }
 
     async componentDidMount() {
-        const snapshot = await firebase.firestore().collection('social-space').get()
-        this.setState({
-            socialSpaces: snapshot.docs.map( doc => (
-                {
-                    id: doc.id,
-                    name: doc.data().space_name,
-                    image_url: doc.data().space_photo_uploaded_url
-                }
-            )),
-            isLoading: false
-        })
+        try {
+            const { condominium } = JSON.parse(await AsyncStorage.getItem('@user'))
+            const snapshot = await firebase.firestore().collection('social-space').where('condominium', '==', condominium).get()
+            this.setState({
+                socialSpaces: snapshot.docs.map( doc => (
+                    {
+                        id: doc.id,
+                        name: doc.data().space_name,
+                        image_url: doc.data().space_photo_uploaded_url
+                    }
+                )),
+                isLoading: false
+            })
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     toggleNav() {
@@ -104,12 +110,4 @@ export class SocialSpaceListScreen extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    
-})
-
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SocialSpaceListScreen)
+export default SocialSpaceListScreen

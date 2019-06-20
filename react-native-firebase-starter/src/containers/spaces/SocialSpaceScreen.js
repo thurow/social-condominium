@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import SideMenu from 'react-native-side-menu';
 import Menu from '../../components/menu/Menu';
-import { SafeAreaView } from 'react-navigation';
+import { SafeAreaView, StackActions, NavigationActions } from 'react-navigation';
 import { ActivityIndicator, View, Text } from 'react-native'
 import { Container, Title } from '../../styles/styles';
 import Header from '../../components/header/Header';
@@ -9,6 +9,7 @@ import firebase from 'react-native-firebase';
 import { Image, CheckBox } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
 import ActionButton from '../../components/button/ActionButton';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class SocialSpaceScreen extends Component {
 
@@ -17,7 +18,34 @@ class SocialSpaceScreen extends Component {
         isLoading: true,
         space: {},
         date: new Date(),
+        spaceId: null,
         clearSpace: false
+    }
+
+    _submitSpace = async () => {
+        try {
+            const { spaceId, clearSpace, date, space } = this.state
+            const { id, firstName } = JSON.parse(await AsyncStorage.getItem('@user'))
+            const submitData = {
+                spaceId,
+                condominiumId: space.condominium,
+                clearSpace,
+                date,
+                userId: id,
+                userName: firstName
+            }
+
+            await firebase.firestore().collection('social-space-rent').add(submitData)
+            alert('Espaço alugado!')
+            const resetAction = StackActions.reset({
+                index: 0,
+                actions: [NavigationActions.navigate({ routeName: 'Home' })],
+            });
+            this.props.navigation.dispatch(resetAction);
+        } catch (err) {
+            console.log(err)
+        }
+
     }
 
     async componentDidMount() {
@@ -25,7 +53,7 @@ class SocialSpaceScreen extends Component {
             const spaceId = this.props.navigation.getParam('spaceId')
 
             const snapshot = await firebase.firestore().collection('social-space').doc(spaceId).get()
-            this.setState({ space:snapshot.data(), isLoading: false })
+            this.setState({ spaceId, space:snapshot.data(), isLoading: false })
         } catch (err) {
             console.log(err)
         }
@@ -110,7 +138,7 @@ class SocialSpaceScreen extends Component {
 
                                 <ActionButton
                                     title='Alugar Espaço'
-                                    action={() => console.log(this.state)}
+                                    action={this._submitSpace}
                                     isPrimary
                                 />
                             </View>
