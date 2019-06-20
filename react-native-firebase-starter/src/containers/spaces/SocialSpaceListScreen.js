@@ -6,13 +6,11 @@ import Menu from '../../components/menu/Menu';
 import { SafeAreaView } from 'react-navigation';
 import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
-import { Image, ThemeConsumer } from 'react-native-elements';
+import { Image } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 import firebase from 'react-native-firebase';
-/**
- * @TODO Filtrar lista pelo condominio do user
- */
+
 export class SocialSpaceListScreen extends Component {
     state = {
         isOpen: false,

@@ -9,6 +9,7 @@ import { Container } from '../../styles/styles'
 import Header from '../../components/header/Header';
 import SideMenu from 'react-native-side-menu';
 import Menu from '../../components/menu/Menu';
+import { SafeAreaView } from 'react-navigation';
 
 class CondominiumScreen extends Component {
 
@@ -78,7 +79,7 @@ class CondominiumScreen extends Component {
             this.setState({
                 isLoading: false
             })
-            
+
             Alert.alert('Condomínio salvo com sucesso!');
         }).catch((error) => {
             console.error("Erro ao salvar condomínio: ", error);
