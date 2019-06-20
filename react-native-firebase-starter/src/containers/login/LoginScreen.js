@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import ActionButton from '../../components/button/ActionButton';
 import InputTypeText from '../../components/inputs/InpuTypeText';
@@ -35,11 +35,11 @@ class LoginScreen extends Component {
 		const { email, password } = this.props;
 
 		if (email === '') {
-			Alert.alert('Por favor informe um e-mail válido.');
+			alert('Por favor informe um e-mail válido.');
 			return false;
 		}
 		if (password === '') {
-			Alert.alert('Por favor informe uma senha válida.');
+			alert('Por favor informe uma senha válida.');
 			return false;
 		}
 		return true;

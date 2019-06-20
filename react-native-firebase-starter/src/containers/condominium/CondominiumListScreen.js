@@ -26,6 +26,14 @@ class CondominiumListScreen extends Component {
             });
     }
 
+    _listEmptyComponent = () => {
+        return (
+            <View>
+                Nenhum Condomínio encontrado ;(
+            </View>
+        )
+    }
+
     render() {
         if (this.state.isLoading) {
             return (
@@ -54,6 +62,7 @@ class CondominiumListScreen extends Component {
                             <FlatList
                                 data={condominiuns}
                                 keyExtractor={condominium => condominium.id.toString()}
+                                ListEmptyComponent={this._listEmptyComponent}
                                 renderItem={({item}) =>
                                     <View
                                         style={{

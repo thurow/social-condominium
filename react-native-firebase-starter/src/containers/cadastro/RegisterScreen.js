@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
 import InpuTypeText from '../../components/inputs/InpuTypeText'
 import ActionButton from '../../components/button/ActionButton';
@@ -37,9 +37,8 @@ class RegisterScreen extends Component {
 
   register = async () => {
     const { email, password, condominium } = this.state;
-    console.log(condominium.toString())
     if (!email || !password) {
-      Alert.alert('O e-mail e a senha são obrigatórios');
+      alert('O e-mail e a senha são obrigatórios');
       return
     }
 
@@ -56,7 +55,7 @@ class RegisterScreen extends Component {
       console.log(error)
       const isPasswordError = error.message.includes('password')
       const message = isPasswordError ? 'A senha deve conter no mínimo 6 caracteres' : 'E-mail inválido'
-      Alert.alert(message);
+      alert(message);
     }
 
   }
