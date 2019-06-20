@@ -7,7 +7,7 @@ export const InputText = styled.TextInput`
     border-bottom-width: 1;
     border-bottom-color: #3b5998;
 `
-export const Container = styled.View`
+export const Container = styled.ScrollView`
     width: 100%;
     height: 100%;
     padding:15px;

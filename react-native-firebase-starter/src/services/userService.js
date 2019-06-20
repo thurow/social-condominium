@@ -1,10 +1,11 @@
 import firebase from 'react-native-firebase';
 
-const createNewUser = async (uid, { firstName, lastName }) => {
+const createNewUser = async (uid, { firstName, lastName, condominium }) => {
     console.log('Creating user {} of uid {}', firstName, uid)
     await firebase.firestore().collection('users').doc(uid).set({
         firstName,
-        lastName
+        lastName,
+        condominium
     })
 }
 

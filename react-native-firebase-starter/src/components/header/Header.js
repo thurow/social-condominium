@@ -6,7 +6,7 @@ import MenuButton from '../menu/MenuButton';
 const Header = ({ logged, toggleNav }) => {
     if (logged) {
         return (
-          <LoggedContainer >
+          <LoggedContainer>
               <Logo logged />
               <MenuButton toggleNav={toggleNav} />
           </LoggedContainer>
