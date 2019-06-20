@@ -29,7 +29,7 @@ class CondominiumListScreen extends Component {
     _listEmptyComponent = () => {
         return (
             <View>
-                Nenhum Condomínio encontrado ;(
+                <Text>Nenhum Condomínio encontrado ;(</Text>
             </View>
         )
     }

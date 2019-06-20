@@ -16,10 +16,14 @@ class SocialSpaceScreen extends Component {
     state = {
         isOpen: false,
         isLoading: true,
-        space: {},
+        space: {
+            space_name: '',
+            space_photo_uploaded_url: null,
+            space_description: ''
+        },
         date: new Date(),
         spaceId: null,
-        clearSpace: false
+        clearSpace: false,
     }
 
     _submitSpace = async () => {
@@ -53,9 +57,27 @@ class SocialSpaceScreen extends Component {
             const spaceId = this.props.navigation.getParam('spaceId')
 
             const snapshot = await firebase.firestore().collection('social-space').doc(spaceId).get()
-            this.setState({ spaceId, space:snapshot.data(), isLoading: false })
+            
+            if (snapshot.exists) {
+                this.setState({ spaceId, space:snapshot.data(), isLoading: false })
+            } else {
+                alert('Espaço inválido ou não existente')
+                const resetAction = StackActions.reset({
+                    index: 0,
+                    actions: [NavigationActions.navigate({ routeName: 'Home' })],
+                });
+                this.setState({ isLoading: false})
+                this.props.navigation.dispatch(resetAction);
+            }
         } catch (err) {
             console.log(err)
+            alert('Espaço inválido ou não existente')
+            const resetAction = StackActions.reset({
+                index: 0,
+                actions: [NavigationActions.navigate({ routeName: 'Home' })],
+            });
+            this.setState({ isLoading: false})
+            this.props.navigation.dispatch(resetAction);
         }
     }
 
@@ -70,8 +92,30 @@ class SocialSpaceScreen extends Component {
     }
 
     render() {
+
         const { navigation } = this.props;
         const { isLoading, space, isOpen } = this.state;
+
+        if (isLoading) {
+            return (
+                <Fragment>
+                    <SafeAreaView style={{ flex: 0, backgroundColor: '#eb4444' }} />
+                    <SafeAreaView style={{ flex: 1, backgroundColor: '#3b5998' }}>
+                        <SideMenu
+                            menu={menu}
+                            isOpen={isOpen}
+                            menuPosition='right'
+                            onChange={isOpen => this.updateMenuState(isOpen)}
+                        >
+                            <Header logged toggleNav={() => this.toggleNav()} />
+                            <Container>
+                                <ActivityIndicator size="large" color="#d33028" />
+                            </Container>
+                        </SideMenu>
+                    </SafeAreaView>
+                </Fragment>
+            )
+        }
 
         const menu = <Menu navigation={navigation} />
         return (

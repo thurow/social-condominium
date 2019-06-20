@@ -50,7 +50,7 @@ export class SocialSpaceListScreen extends Component {
     _listEmptyComponent = () => {
         return (
             <View>
-                Nenhum Espaço encontrado ;(
+                <Text>Nenhum Espaço encontrado ;(</Text>
             </View>
         )
     }
