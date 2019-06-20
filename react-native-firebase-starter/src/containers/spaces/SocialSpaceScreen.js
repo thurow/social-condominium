@@ -88,7 +88,7 @@ class SocialSpaceScreen extends Component {
                         <Container>
                             {isLoading && <ActivityIndicator size="large" color="#d33028" />}
                             <View
-                                style={isLoading === true ? { display: 'none' } : { borderEndColor: '#eee', borderEndWidth:1 }}
+                                style={isLoading === true ? { display: 'none' } : { }}
                             >
                                 <Title>{space.space_name}</Title>
                                 <Image

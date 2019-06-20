@@ -6,7 +6,7 @@ import Menu from '../../components/menu/Menu';
 import { SafeAreaView } from 'react-navigation';
 import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
-import { Image } from 'react-native-elements';
+import { Image, ThemeConsumer } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 import firebase from 'react-native-firebase';
@@ -49,6 +49,14 @@ export class SocialSpaceListScreen extends Component {
         this.setState({ isOpen });
     }
 
+    _listEmptyComponent = () => {
+        return (
+            <View>
+                Nenhum Espaço encontrado ;(
+            </View>
+        )
+    }
+
     render() {
         const { navigation } = this.props;
         const { socialSpaces, isLoading } = this.state
@@ -70,14 +78,16 @@ export class SocialSpaceListScreen extends Component {
                             {isLoading && <ActivityIndicator size="large" color="#d33028" />}
                             <FlatList
                                 data={socialSpaces}
-                                style={isLoading === true ? { display: 'none' } : { borderEndColor: '#eee', borderEndWidth:1 }}
+                                style={isLoading === true ? { display: 'none' } : { }}
                                 keyExtractor={space => space.id.toString()}
+                                ListEmptyComponent={this._listEmptyComponent}
                                 renderItem={({item}) =>
                                     <View
                                         style={{
                                             flex: 0,
                                             flexDirection: 'row',
                                             alignItems: 'center',
+                                            flexGrow: 1,
                                             marginBottom: 15,
                                             padding:15,
                                             borderBottomWidth: 2,
@@ -91,7 +101,10 @@ export class SocialSpaceListScreen extends Component {
                                             style={{
                                                 paddingVertical: 20,
                                                 fontSize: 20,
-                                                fontWeight:'400'
+                                                fontWeight:'400',
+                                                width: 0,
+                                                flexGrow: 1,
+                                                flex: 1,
                                             }}
                                             onPress={() => navigation.push('SocialSpace', {
                                                 spaceId: item.id

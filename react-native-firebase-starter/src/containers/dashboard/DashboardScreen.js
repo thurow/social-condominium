@@ -13,8 +13,7 @@ import { SafeAreaView, StackActions, NavigationActions } from 'react-navigation'
 
 const styles = StyleSheet.create({
     item: {
-        fontSize: 20,
-        paddingVertical: 10
+        fontSize: 20
     }
 });
 

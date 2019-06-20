@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Alert, StyleSheet } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
 import InpuTypeText from '../../components/inputs/InpuTypeText'
 import ActionButton from '../../components/button/ActionButton';
@@ -112,7 +112,7 @@ class RegisterScreen extends Component {
               onChange={last_name => this.setState({ last_name })}
               placeholder='Sobrenome'
             />
-            <RNPickerSelect
+            {/* <RNPickerSelect
               placeholder={placeholder}
               items={this.state.condominiuns}
               style={pickerSelectStyles}
@@ -122,7 +122,7 @@ class RegisterScreen extends Component {
                 });
               }}
               value={this.state.condominium}
-            />
+            /> */}
             <InpuTypeText
               stateValue={this.state.email}
               name='email'

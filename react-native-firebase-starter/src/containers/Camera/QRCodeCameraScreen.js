@@ -3,16 +3,29 @@ import { View, StyleSheet, Alert } from 'react-native'
 import { RNCamera } from "react-native-camera";
 
 class QRCodeCameraScreen extends Component {
-//jpS2x09r1fmq8erGCZUy
+
+    state = {
+        shouldReadBarCode: true
+    }
+
     onBarCodeRead = (e) => {
-        Alert.alert("Barcode value is"+e.data ,"Barcode type is"+e.type);
+        try {
+            this.setState({ shouldReadBarCode:false })
+            const spaceId = e.data
+            this.props.navigation.push('SocialSpace', {
+                spaceId
+            })
+        } catch (err) {
+            alert('Ocorreu um problema, por favor tente novamente.')
+        }
     }
     render() {
+        const { shouldReadBarCode }  = this.state;
         return (
             <View style={styles.container}>
                 <RNCamera
                     style={styles.preview}
-                    onBarCodeRead={this.onBarCodeRead}
+                    onBarCodeRead={shouldReadBarCode ? this.onBarCodeRead : null}
                     ref={cam => this.camera = cam}
                 ></RNCamera>
             </View>
