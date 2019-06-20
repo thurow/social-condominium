@@ -39,13 +39,13 @@ class CondominiumScreen extends Component {
                         const condominium = doc.data();
                         this.setState({
                             key: doc.id,
-                            city: doc.city,
-                            complement: doc.complement,
-                            description: doc.description,
-                            name: doc.name,
-                            number: doc.number,
-                            state: doc.state,
-                            street: doc.state,
+                            city: condominium.city,
+                            complement: condominium.complement,
+                            description: condominium.description,
+                            name: condominium.name,
+                            number: condominium.number,
+                            state: condominium.state,
+                            street: condominium.state,
                             isLoading: false
                         })
                     }

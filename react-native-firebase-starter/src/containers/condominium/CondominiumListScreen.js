@@ -1,29 +1,29 @@
 import React, { Component, Fragment } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import SideMenu from 'react-native-side-menu';
 import Menu from '../../components/menu/Menu';
 import { SafeAreaView } from 'react-navigation';
 import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
 import firebase from 'react-native-firebase';
+import Loading from '../../components/utils/Loading';
 
 class CondominiumListScreen extends Component {
 
     state = {
         isOpen: false,
-        isLoading: false,
+        isLoading: true,
         condominiuns: []
     }
 
-    async getCondominiuns() {
-        const snapshot = await firebase.firestore().collection('condominium').get();
-        return snapshot.docs.map(doc => doc.data());
-    }
-
     async componentDidMount() {
-        this.state.isLoading = true;
-        this.state.condominiuns = await this.getCondominiuns();
-        this.state.isLoading = false;
+        firebase.firestore().collection('condominium').get()
+            .then(snapshot => {
+                this.setState({
+                    condominiuns: snapshot.docs.map(doc => ({id: doc.id, value: doc.data()})),
+                    isLoading: false
+                });
+            });
     }
 
     render() {
@@ -51,29 +51,33 @@ class CondominiumListScreen extends Component {
                         <Header logged toggleNav={() => this.toggleNav()} />
                         <Container>
                             <Title>Condomínios</Title>
-                            {condominiuns.map(condominium => (
-                                <View
-                                    key={condominium.id}
-                                    style={{
-                                        flex: 0,
-                                        flexDirection: 'row',
-                                        alignItems: 'center',
-                                        marginBottom: 15,
-                                        padding: 15,
-                                        borderBottomWidth: 2,
-                                        borderColor: "#eee"
-                                    }}
-                                >
-                                    <Text
+                            <FlatList
+                                data={condominiuns}
+                                keyExtractor={condominium => condominium.id.toString()}
+                                renderItem={({item}) =>
+                                    <View
                                         style={{
-                                            fontSize: 24,
-                                            fontWeight: '400'
+                                            flex: 0,
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            marginBottom: 15,
+                                            padding: 15,
+                                            borderBottomWidth: 2,
+                                            borderColor: "#eee"
                                         }}
                                     >
-                                        {condominium.name}
-                                    </Text>
-                                </View>
-                            ))}
+                                        <Text
+                                            style={{
+                                                fontSize: 24,
+                                                fontWeight: '400'
+                                            }}
+                                            onPress={() => this.props.navigation.navigate('CondominiumRegister', {key: item.id})}
+                                        >
+                                            {item.value.name}
+                                        </Text>
+                                    </View>
+                                }
+                            />
                         </Container>
                     </SideMenu>
                 </SafeAreaView>
