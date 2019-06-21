@@ -22,7 +22,7 @@ class CondominiumScreen extends Component {
         number: '',
         state: '',
         street: '',
-        isLoading: false,
+        isLoading: true,
         isOpen: false
     }
 
@@ -32,7 +32,7 @@ class CondominiumScreen extends Component {
 
     async componentDidMount() {
         const { navigation } = this.props;
-        const key = navigation.getParam('key', 'NO-ID');
+        const key = navigation.getParam('key', '');
         if(key && key.length > 0) {
             firebase.firestore().collection('condominium').doc(key).get()
                 .then((doc) => {
@@ -52,7 +52,7 @@ class CondominiumScreen extends Component {
                     }
                 });
         } else {
-            Alert.alert('Não foi possível recuperar o condomínio.');
+            this.setState({isLoading: false})
         }
     }
 
@@ -88,6 +88,15 @@ class CondominiumScreen extends Component {
             });
             Alert.alert('Ocorreu uma falha ao salvar o condomínio');
         });
+    }
+
+    delete = async() => {
+        if(this.state.key !== '') {
+            firebase.firestore().collection('condominium').doc(this.state.key).delete()
+                .then((doc) => {
+                    this.props.navigation.navigate('CondominiumList');
+                });
+        }
     }
 
     render() {
@@ -176,6 +185,12 @@ class CondominiumScreen extends Component {
                                     isPrimary
                                     action={this.register}
                                 />
+                                {this.state.key !== '' && (
+                                    <ActionButton
+                                        title="Excluir"
+                                        action={this.delete}
+                                    />  
+                                )}
                             </Container>
                         </KeyboardAvoidingView>
                     </SideMenu>

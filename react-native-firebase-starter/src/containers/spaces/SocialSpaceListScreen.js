@@ -88,8 +88,9 @@ export class SocialSpaceListScreen extends Component {
                                             flexGrow: 1,
                                             marginBottom: 15,
                                             padding:15,
-                                            borderBottomWidth: 2,
-                                            borderColor: "#eee"
+                                            borderWidth: 0.3,
+                                            borderRadius: 7,
+                                            borderColor: "red"
                                         }}
                                     >
                                         <Image

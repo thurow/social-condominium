@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, StyleSheet } from 'react-native'
 import SideMenu from 'react-native-side-menu';
 import Menu from '../../components/menu/Menu';
 import { SafeAreaView } from 'react-navigation';
@@ -7,6 +7,7 @@ import Header from '../../components/header/Header';
 import { Container, Title } from '../../styles/styles';
 import firebase from 'react-native-firebase';
 import Loading from '../../components/utils/Loading';
+import ActionButton from '../../components/button/ActionButton';
 
 class CondominiumListScreen extends Component {
 
@@ -71,14 +72,15 @@ class CondominiumListScreen extends Component {
                                             alignItems: 'center',
                                             marginBottom: 15,
                                             padding: 15,
-                                            borderBottomWidth: 2,
-                                            borderColor: "#eee"
+                                            borderWidth: 0.3,
+                                            borderRadius: 7,
+                                            borderColor: "red"
                                         }}
                                     >
                                         <Text
                                             style={{
-                                                fontSize: 24,
-                                                fontWeight: '400'
+                                                fontSize: 22,
+                                                fontWeight: '350'
                                             }}
                                             onPress={() => this.props.navigation.navigate('CondominiumRegister', {key: item.id})}
                                         >
@@ -90,6 +92,13 @@ class CondominiumListScreen extends Component {
                         </Container>
                     </SideMenu>
                 </SafeAreaView>
+                <View>
+                    <ActionButton
+                        title="Novo condomínio"
+                        isPrimary
+                        action={() => this.props.navigation.navigate('CondominiumRegister')}
+                    />
+                </View>
             </Fragment>
         )
     }

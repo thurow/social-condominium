@@ -11,13 +11,16 @@ import firebase from 'react-native-firebase';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-navigation';
+import uuid from 'uuid/v4'
 
 class PostRegisterScreen extends Component {
 
     state = {
         post_photo: null,
+        post_photo_uploaded_url: null,
         post_description: '',
         isOpen: false,
+        uploading: false
     }
 
     handleChoosePhoto = () => {
@@ -29,6 +32,30 @@ class PostRegisterScreen extends Component {
                 this.setState({ post_photo: response })
             }
         });
+    }
+    handleUploadPhoto = () => {
+        const filename = `${uuid()}.jpg`; // Generate unique name
+        this.setState({ uploading: true });
+        firebase
+            .storage()
+            .ref(`posts/${filename}`)
+            .putFile(this.state.post_photo.uri)
+            .on(
+                firebase.storage.TaskEvent.STATE_CHANGED,
+                snapshot => {
+                    if (snapshot.state === firebase.storage.TaskState.SUCCESS) {
+                        this.setState({
+                            post_photo_uploaded_url: snapshot.downloadURL,
+                            uploading: false
+                        })
+                        alert('Imagem salva com sucesso!')
+                    }
+                },
+                error => {
+                    unsubscribe();
+                    alert('Falha ao salvar a imagem. Tente novamente!');
+                }
+        );
     }
 
     toggleNav() {
@@ -42,16 +69,19 @@ class PostRegisterScreen extends Component {
     }
 
     savePost = async() => {
-        const {id} = JSON.parse(await AsyncStorage.getItem('@user'));
+        const { id, condominium } = JSON.parse(await AsyncStorage.getItem('@user'));
+        const { post_description, post_photo_uploaded_url } = this.state;
         await firebase.firestore().collection('post').add({
             datetime: new Date(),
-            description: this.state.post_description,
+            description: post_description,
+            photo_url: post_photo_uploaded_url,
+            condominium: condominium,
             userid: id
         });
     }
 
     render() {
-        const { post_photo } = this.state;
+        const { post_photo, uploading } = this.state;
         const { navigation } = this.props;
 
         const menu = <Menu navigation={navigation} />
@@ -87,7 +117,11 @@ class PostRegisterScreen extends Component {
                                             resizeMode="contain"
                                             style={{ width: '80%', height: 200, marginLeft: 'auto', marginRight: 'auto' }}
                                         />
-                                        <ActionButton title="Salvar imagem" action={this.handleUpload} />
+                                        {uploading ? (
+                                            <ActionButton title="Salvando..." disabled />
+                                        ) : (
+                                            <ActionButton title="Salvar imagem" action={this.handleUploadPhoto} />
+                                        )}
                                     </React.Fragment>
                                 )}
                                 <ActionButton
@@ -96,7 +130,7 @@ class PostRegisterScreen extends Component {
                                     color="#3b5998"
                                 />
                                 <ActionButton
-                                    title='Salvar Publicação'
+                                    title='Publicar'
                                     isPrimary
                                     action={this.savePost}
                                 />

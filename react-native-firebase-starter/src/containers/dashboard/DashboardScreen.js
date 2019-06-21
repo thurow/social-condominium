@@ -92,14 +92,6 @@ class DashboardScreen extends Component {
                             </Card>
                             <Card>
                                 <Text
-                                    onPress={() => this.props.navigation.push('CondominiumRegister')}
-                                    style={styles.item}
-                                >
-                                    Cadastrar condomínio
-                                </Text>
-                            </Card>
-                            <Card>
-                                <Text
                                     onPress={() => this.props.navigation.push('SocialSpaceRegister')}
                                     style={styles.item}
                                 >
