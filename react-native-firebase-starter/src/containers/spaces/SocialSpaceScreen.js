@@ -57,7 +57,7 @@ class SocialSpaceScreen extends Component {
             const spaceId = this.props.navigation.getParam('spaceId')
 
             const snapshot = await firebase.firestore().collection('social-space').doc(spaceId).get()
-            
+
             if (snapshot.exists) {
                 this.setState({ spaceId, space:snapshot.data(), isLoading: false })
             } else {

@@ -2,6 +2,9 @@ import React from 'react'
 import { ScrollView, Text, StyleSheet } from 'react-native'
 import { Title } from '../../styles/styles';
 import { connect } from "react-redux";
+import { clearFields } from '../../actions/actions';
+import AsyncStorage from '@react-native-community/async-storage';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 const styles = StyleSheet.create({
   menu: {
@@ -17,7 +20,8 @@ const styles = StyleSheet.create({
     top: 20,
   },
   item: {
-    fontSize: 14,
+    width: '100%',
+    fontSize: 16,
     fontWeight: '300',
     paddingTop: 5,
     paddingBottom: 10,
@@ -29,7 +33,11 @@ class Menu extends React.Component {
   logout = async () => {
     await AsyncStorage.clear()
     this.props.onLogoutAction()
-    this.props.navigation.push('Home')
+    const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: 'Home' })],
+    });
+    this.props.navigation.dispatch(resetAction);
   }
 
   render() {
@@ -61,7 +69,7 @@ class Menu extends React.Component {
           Espaços Sociais
         </Text>
         <Text
-          onPress={() => this.logout}
+          onPress={this.logout}
           style={{...styles.item, color:'red'}}
         >
           Sair

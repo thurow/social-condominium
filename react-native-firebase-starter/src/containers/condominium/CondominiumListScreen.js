@@ -38,9 +38,23 @@ class CondominiumListScreen extends Component {
     render() {
         if (this.state.isLoading) {
             return (
-                <View>
-                    <Loading />
-                </View>
+                <Fragment>
+                    <SafeAreaView style={{ flex: 0, backgroundColor: '#eb4444' }} />
+                    <SafeAreaView style={{ flex: 1, backgroundColor: '#3b5998' }}>
+                        <SideMenu
+                            menu={menu}
+                            isOpen={this.state.isOpen}
+                            menuPosition='right'
+                            onChange={isOpen => this.updateMenuState(isOpen)}
+                        >
+                            <Header logged toggleNav={() => this.toggleNav()} />
+                            <Container>
+                                <Title>Condomínios</Title>
+                                <Loading />
+                            </Container>
+                        </SideMenu>
+                    </SafeAreaView>
+                </Fragment>
             )
         }
 
@@ -80,7 +94,8 @@ class CondominiumListScreen extends Component {
                                         <Text
                                             style={{
                                                 fontSize: 22,
-                                                fontWeight: '350'
+                                                fontWeight: '300',
+                                                width: '100%'
                                             }}
                                             onPress={() => this.props.navigation.navigate('CondominiumRegister', {key: item.id})}
                                         >

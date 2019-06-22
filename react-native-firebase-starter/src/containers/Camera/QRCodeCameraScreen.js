@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Alert } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { RNCamera } from "react-native-camera";
 
 class QRCodeCameraScreen extends Component {
@@ -19,6 +19,7 @@ class QRCodeCameraScreen extends Component {
             alert('Ocorreu um problema, por favor tente novamente.')
         }
     }
+
     render() {
         const { shouldReadBarCode }  = this.state;
         return (

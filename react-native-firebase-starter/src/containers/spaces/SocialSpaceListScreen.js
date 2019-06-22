@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
 import SideMenu from 'react-native-side-menu';
-import { connect } from 'react-redux'
 import Menu from '../../components/menu/Menu';
 import { SafeAreaView } from 'react-navigation';
 import Header from '../../components/header/Header';

@@ -39,7 +39,6 @@ class DashboardScreen extends Component {
         try {
             const userStr = await AsyncStorage.getItem('@user')
             const user = JSON.parse(userStr)
-            console.log('user loaded', user)
             this.setState({ name: user.firstName, condominium: user.condominium })
         } catch (e) {
             console.log(e)

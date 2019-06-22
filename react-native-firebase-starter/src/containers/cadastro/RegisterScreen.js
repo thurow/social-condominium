@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native';
 import InpuTypeText from '../../components/inputs/InpuTypeText'
 import ActionButton from '../../components/button/ActionButton';
@@ -9,8 +8,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Header from '../../components/header/Header';
 import { SafeAreaView } from 'react-navigation';
 import userService from '../../services/userService'
-import Loading from '../../components/utils/Loading';
-import RNPickerSelect from 'react-native-picker-select';
 
 class RegisterScreen extends Component {
 
@@ -18,25 +15,11 @@ class RegisterScreen extends Component {
     first_name: '',
     last_name: '',
     email: '',
-    password: '',
-    condominium: '',
-    isLoading: false,
-    condominiuns: []
+    password: ''
   };
 
-  async getCondominiuns() {
-    const snapshot = await firebase.firestore().collection('condominium').get();
-    return snapshot.docs.map(doc => ({ value: doc.id, label: doc.data().name }));
-  }
-
-  async componentDidMount() {
-    this.setState({ isLoading: true })
-    this.state.condominiuns = await this.getCondominiuns();
-    this.setState({ isLoading: false })
-  }
-
   register = async () => {
-    const { email, password, condominium } = this.state;
+    const { email, password } = this.state;
     if (!email || !password) {
       alert('O e-mail e a senha são obrigatórios');
       return
@@ -47,7 +30,7 @@ class RegisterScreen extends Component {
       await userService.createNewUser(authentication.user.uid, {
         firstName: this.state.first_name,
         lastName: this.state.last_name,
-        condominium: condominium
+        condominium: 'none'
       })
       await this.storeData(authentication);
       this.props.navigation.push('Dashboard')
@@ -67,7 +50,7 @@ class RegisterScreen extends Component {
         email: authentication.user.email,
         firstName: this.state.first_name,
         lastName: this.state.last_name,
-        condominium: this.state.condominium
+        condominium: 'none'
       }))
     } catch (e) {
       // saving error
@@ -76,19 +59,6 @@ class RegisterScreen extends Component {
   }
 
   render() {
-    if (this.state.isLoading) {
-      return (
-          <View>
-              <Loading />
-          </View>
-      )
-    }
-
-    const placeholder = {
-      label: 'Selecione o condomínio...',
-      value: null,
-      color: '#9EA0A4',
-    };
 
     return (
       <SafeAreaView>
@@ -111,17 +81,6 @@ class RegisterScreen extends Component {
               onChange={last_name => this.setState({ last_name })}
               placeholder='Sobrenome'
             />
-            {/* <RNPickerSelect
-              placeholder={placeholder}
-              items={this.state.condominiuns}
-              style={pickerSelectStyles}
-              onValueChange={condominium => {
-                this.setState({
-                  condominium
-                });
-              }}
-              value={this.state.condominium}
-            /> */}
             <InpuTypeText
               stateValue={this.state.email}
               name='email'
@@ -154,24 +113,5 @@ class RegisterScreen extends Component {
 RegisterScreen.navigationOptions = {
   title: 'Cadastre-se'
 }
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    height:40,
-    paddingBottom: 10,
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#3b5998',
-    color: 'black'
-  },
-  inputAndroid: {
-    height:40,
-    paddingBottom: 10,
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#3b5998',
-    color: 'black'
-  },
-});
 
 export default RegisterScreen

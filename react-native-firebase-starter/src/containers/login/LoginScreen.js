@@ -13,7 +13,6 @@ import { StackActions, NavigationActions, SafeAreaView } from 'react-navigation'
 import { GoogleSignin } from 'react-native-google-signin';
 import userService from '../../services/userService'
 
-
 GoogleSignin.configure({
 	webClientId: '806706434094-s0mhaernndvqjb2c9gveasr3r622dgie.apps.googleusercontent.com',
 	offlineAccess: true,
@@ -23,7 +22,8 @@ GoogleSignin.configure({
 class LoginScreen extends Component {
 
 	state = {
-		loggedIn: null
+		loggedIn: null,
+		user: {}
 	}
 
 	isUserLoggedIn = async () => {
@@ -45,7 +45,7 @@ class LoginScreen extends Component {
 		return true;
 	};
 
-	storeData = async (user) => {
+	storeData = async user => {
 		try {
 			await AsyncStorage.setItem('@user', JSON.stringify({
 				id: user.uid,
@@ -54,17 +54,14 @@ class LoginScreen extends Component {
 				lastName: user.lastName,
 				condominium: user.condominium
 			}))
-			const fbUser = await firebase.firestore().collection('users').doc(user.uid).get()
-			const fbUserData = fbUser.data()
-			if (fbUserData.condominium != null) {
-				const condominium = await fbUserData.condominium.get()
-				if (condominium.exists) {
-					await AsyncStorage.setItem('@condominium', condominium.id)
-				}
-			}
-
+			console.log(user.condominium)
+			// if (fbUserData.condominium != null) {
+			// 	const condominium = await fbUserData.condominium.get()
+			// 	if (condominium.exists) {
+			// 		await AsyncStorage.setItem('@condominium', condominium.id)
+			// 	}
+			// }
 		} catch (e) {
-			// saving error
 			console.log(e)
 		}
 	}
@@ -78,8 +75,10 @@ class LoginScreen extends Component {
 			uid: user.uid,
 			email: user.email,
 			firstName: user.displayName,
+			condominium: 'none'
 		}
-		await userService.createUserIfNotExists(userProfile.uid, userProfile)
+		const result = await userService.createUserIfNotExists(userProfile.uid, userProfile)
+		userProfile.condominium = result.data().condominium
 		return userProfile
 	}
 
@@ -113,9 +112,13 @@ class LoginScreen extends Component {
 		try {
 			const userProfile = await signIn()
 			await this.storeData(userProfile);
+			let route = 'Dashboard'
+			if (userProfile.condominium === 'none') {
+				route = 'RegisterInCondominium'
+			}
 			const resetAction = StackActions.reset({
 				index: 0,
-				actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+				actions: [NavigationActions.navigate({ routeName: route })],
 			});
 			this.props.navigation.dispatch(resetAction);
 		} catch (error) {
@@ -175,8 +178,8 @@ class LoginScreen extends Component {
 								title="Cadastre-se" />
 							<Text>ou</Text>
 							{/**
-						@TODO transformar botões em somente logo, sem texto
-						*/}
+							@TODO transformar botões em somente logo, sem texto
+							*/}
 							<ActionButton
 								title="Login com Facebook"
 								color="#3b5998"
@@ -196,7 +199,6 @@ class LoginScreen extends Component {
 	}
 }
 
-
 LoginScreen.navigationOptions = {
 	title: 'Faça Login'
 }
@@ -210,8 +212,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onChangeEmail: (newValue) => dispatch(actions.changeEmail(newValue)),
-		onChangePassword: (newValue) => dispatch(actions.changePassword(newValue))
+		onChangeEmail: newValue => dispatch(actions.changeEmail(newValue)),
+		onChangePassword: newValue => dispatch(actions.changePassword(newValue))
 	}
 }
 
