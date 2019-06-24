@@ -102,9 +102,23 @@ class CondominiumScreen extends Component {
     render() {
         if(this.state.isLoading){
             return(
-              <View>
-                <Loading/>
-              </View>
+                <Fragment>
+                    <SafeAreaView style={{ flex: 0, backgroundColor: '#eb4444' }} />
+                    <SafeAreaView style={{ flex: 1, backgroundColor: '#3b5998' }}>
+                        <SideMenu
+                            menu={menu}
+                            isOpen={this.state.isOpen}
+                            disableGestures
+                            menuPosition='right'
+                            onChange={isOpen => this.updateMenuState(isOpen)}
+                        >
+                            <Header logged toggleNav={() => this.toggleNav()} />
+                            <Container>
+                                <Loading/>
+                            </Container>
+                        </SideMenu>
+                    </SafeAreaView>
+              </Fragment>
             )
         }
 
@@ -122,7 +136,7 @@ class CondominiumScreen extends Component {
                         onChange={isOpen => this.updateMenuState(isOpen)}
                     >
                         <Header logged toggleNav={() => this.toggleNav()} />
-                        <KeyboardAvoidingView behavior="padding" enabled>
+                        <KeyboardAvoidingView behavior="height" enabled>
                             <Container>
                                 <InpuTypeText
                                     stateValue={this.state.name}
