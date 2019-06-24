@@ -8,19 +8,22 @@ import SideMenu from 'react-native-side-menu';
 import AsyncStorage from '@react-native-community/async-storage';
 import { connect } from "react-redux";
 import { clearFields } from '../../actions/actions'
-import ActionButton from '../../components/button/ActionButton';
 import { SafeAreaView, StackActions, NavigationActions } from 'react-navigation';
 
 const styles = StyleSheet.create({
     item: {
         fontSize: 20
+    },
+    logout: {
+        fontSize: 20,
+        color: 'red'
     }
 });
 
 class DashboardScreen extends Component {
 
     state = {
-        name: null,
+        name: '',
         condominium: null,
         isOpen: false
     }
@@ -121,7 +124,14 @@ class DashboardScreen extends Component {
                                     Espaços Sociais
                                 </Text>
                             </Card>
-                            <ActionButton action={this.logout} title="Sair" color="red" />
+                            <Card containerStyle={{ marginBottom: 20, borderColor: 'red', borderWidth:2 }}>
+                                <Text
+                                    onPress={this.logout}
+                                    style={styles.logout}
+                                >
+                                    Sair
+                                </Text>
+                            </Card>
                         </Container>
                     </SideMenu>
                 </SafeAreaView>

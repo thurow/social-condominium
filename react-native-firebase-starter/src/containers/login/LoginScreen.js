@@ -54,13 +54,6 @@ class LoginScreen extends Component {
 				lastName: user.lastName,
 				condominium: user.condominium
 			}))
-			console.log(user.condominium)
-			// if (fbUserData.condominium != null) {
-			// 	const condominium = await fbUserData.condominium.get()
-			// 	if (condominium.exists) {
-			// 		await AsyncStorage.setItem('@condominium', condominium.id)
-			// 	}
-			// }
 		} catch (e) {
 			console.log(e)
 		}
@@ -176,18 +169,11 @@ class LoginScreen extends Component {
 							<ActionButton action={this.login} title="Entrar" isPrimary />
 							<ActionButton action={() => push('Register')}
 								title="Cadastre-se" />
-							<Text>ou</Text>
-							{/**
-							@TODO transformar botões em somente logo, sem texto
-							*/}
-							<ActionButton
-								title="Login com Facebook"
-								color="#3b5998"
-								isPrimary
-							/>
+							<Text style={{ textAlign: 'center', marginVertical: 20, textTransform: 'uppercase' }}>ou</Text>
 							<ActionButton
 								title="Login com Google"
 								color="#d34836"
+								isPrimary
 								action={() => this.login('google')}
 							/>
 						</View>
