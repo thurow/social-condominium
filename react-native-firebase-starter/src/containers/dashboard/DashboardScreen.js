@@ -110,6 +110,14 @@ class DashboardScreen extends Component {
                             </Card>
                             <Card>
                                 <Text
+                                    onPress={() => this.props.navigation.push('PostList')}
+                                    style={styles.item}
+                                >
+                                    Publicações
+                                </Text>
+                            </Card>                            
+                            <Card>
+                                <Text
                                     onPress={() => this.props.navigation.push('QRCodeCamera')}
                                     style={styles.item}
                                 >
